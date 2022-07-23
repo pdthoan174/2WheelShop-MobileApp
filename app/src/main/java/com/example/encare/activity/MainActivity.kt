@@ -10,9 +10,7 @@ import android.util.Log
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.example.encare.R
-import com.example.encare.adapters.Retrofit
-import com.example.encare.adapters.Retrofit.instance
-import com.example.encare.adapters.posts
+
 import com.example.encare.api.RetrofitClient
 
 import com.example.encare.models.ProfileResponse
