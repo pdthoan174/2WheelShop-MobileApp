@@ -87,13 +87,36 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
+    <Switch
+        android:id="@+id/rememberLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleX="0.8"
+        android:scaleY="0.8"
+        app:layout_constraintEnd_toEndOf="@+id/editTextPassword"
+        app:layout_constraintTop_toBottomOf="@id/editTextPassword"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remember Login"
+        android:fontFamily="@font/poppins"
+        android:textColor="#B3000000"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toStartOf="@+id/rememberLogin"
+        app:layout_constraintTop_toTopOf="@+id/rememberLogin"
+        app:layout_constraintBottom_toBottomOf="@+id/rememberLogin"
+
+        />
+
 
     <TextView
         android:id="@+id/errorMessageLogin"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="9dp"
         android:layout_gravity="center"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="25dp"
         android:fontFamily="@font/poppins"
         android:text=""
         android:textColor="#BFFA0202"
