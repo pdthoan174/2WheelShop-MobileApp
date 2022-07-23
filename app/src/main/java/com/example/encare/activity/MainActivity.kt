@@ -1,12 +1,12 @@
 package com.example.encare.activity
 
-import android.content.Intent
+
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.example.encare.R
@@ -15,13 +15,11 @@ import com.example.encare.api.RetrofitClient
 
 import com.example.encare.models.ProfileResponse
 import com.example.encare.models.User
-import kotlinx.android.synthetic.main.activity_login.*
+
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Header
 import java.net.URL
 
 class MainActivity : AppCompatActivity() {
@@ -70,7 +68,7 @@ class MainActivity : AppCompatActivity() {
                         Glide.with(applicationContext)
                             .load(avatar)
 //                            .override(20,20)
-//                            .placeholder(R.drawable)
+//                            .placeholder(R.drawable.load)
                             .into(avt1)
 
                     }else{
@@ -100,4 +98,9 @@ class MainActivity : AppCompatActivity() {
             avt1.setImageBitmap(result)
         }
     }
+
+    fun storageInfoUser() {
+
+    }
+
 }

@@ -20,8 +20,7 @@ import java.util.ArrayList
 import java.util.regex.Pattern
 
 class LoginActivity : AppCompatActivity() {
-    val phone = editTextPhone.text.toString().trim()
-    val password = editTextPassword.text.toString().trim()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,12 +28,13 @@ class LoginActivity : AppCompatActivity() {
 
 
         btn_login.setOnClickListener {
-
-            if (validate(phone, password)){
-                sendRequestLogin(phone, password)
-
-            }
-//            sendRequestLogin("0987654321","0987654321")
+            val phone = editTextPhone.text.toString().trim()
+            val password = editTextPassword.text.toString().trim()
+//            if (validate(phone, password)){
+//                sendRequestLogin(phone, password)
+//
+//            }
+            sendRequestLogin("0987654321","0987654321")
         }
         sign_up.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
