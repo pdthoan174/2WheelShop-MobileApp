@@ -1,13 +1,14 @@
 package com.example.encare.activity
 
-
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
+
 import android.widget.Toast
+import androidx.preference.PreferenceManager
 import com.bumptech.glide.Glide
 import com.example.encare.R
 
@@ -35,7 +36,6 @@ class MainActivity : AppCompatActivity() {
             test.append("\nRole: "+infoUser.role)
             test.append("\nPass: "+infoUser.password)
             test.append("\nToken: "+infoUser.token)
-
             // Chuoi token de add vao Header
             token = "Bearer "+infoUser.token.toString()
         }
@@ -56,7 +56,6 @@ class MainActivity : AppCompatActivity() {
                     val accountResponse = infoProfile?.data?.accountResponse
                     if ( accountResponse!= null){
                         var accountId = accountResponse.accountId
-
                     }
 
                     if (response.isSuccessful){
@@ -64,7 +63,6 @@ class MainActivity : AppCompatActivity() {
                         textName.text = infoProfile?.data?.accountResponse?.name
                         var avatar = infoProfile?.data?.accountResponse?.avatar
 //                        loadImage().execute(avatar)
-
                         Glide.with(applicationContext)
                             .load(avatar)
 //                            .override(20,20)
@@ -74,7 +72,6 @@ class MainActivity : AppCompatActivity() {
                     }else{
                         Toast.makeText(applicationContext, "Get profile Fail", Toast.LENGTH_SHORT).show()
 //                        Toast.makeText(applicationContext, "Code: "+response.code(), Toast.LENGTH_SHORT).show()
-
                     }
                 }
                 override fun onFailure(call: Call<ProfileResponse>, t: Throwable) {
@@ -89,7 +86,6 @@ class MainActivity : AppCompatActivity() {
             val url = URL(params[0])
             val inputStream = url.openConnection().getInputStream()
             val bitmap:Bitmap = BitmapFactory.decodeStream(inputStream)
-
             return bitmap
         }
 
@@ -100,7 +96,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun storageInfoUser() {
-
+        val preferences = PreferenceManager.getDefaultSharedPreferences(this)
+        // put data
+        val editor = preferences.edit()
+        editor.putString("KEY","VALUE")
+        editor.apply()
     }
 
 }
