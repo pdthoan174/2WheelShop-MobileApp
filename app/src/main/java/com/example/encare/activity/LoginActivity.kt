@@ -1,5 +1,6 @@
 package com.example.encare.activity
 
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
@@ -22,12 +23,12 @@ import java.util.regex.Pattern
 
 class LoginActivity : AppCompatActivity() {
 
-    private val preferences:SharedPreferences = this.getSharedPreferences("Info User", MODE_PRIVATE)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        getInfoUser()
 
         btn_login?.setOnClickListener {
             val phone = editTextPhone.text.toString().trim()
@@ -36,10 +37,13 @@ class LoginActivity : AppCompatActivity() {
 //                sendRequestLogin(phone, password)
 //
 //            }
-            sendRequestLogin("0987654321","0987654321")
-            storageInfoUser("0987654321", "password")
 
-            getInfoUser()
+            // luu tai khoan khi bam luu dang nhap vao bo nho
+            val check:Boolean = rememberLogin.isChecked
+            if (check){
+                storageInfoUser(phone, password)
+            }
+            sendRequestLogin("0987654321","0987654321")
 
         }
         sign_up?.setOnClickListener {
@@ -111,6 +115,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun storageInfoUser(username:String, password:String ) {
+        val preferences:SharedPreferences = this.getSharedPreferences("Info User", Context.MODE_PRIVATE)
 
         // Kich hoat trang thai EDIT moi EDIT duoc
         val editor = preferences.edit()
@@ -120,6 +125,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun getInfoUser(){
+        val preferences:SharedPreferences = this.getSharedPreferences("Info User", Context.MODE_PRIVATE)
+
         val phone = preferences.getString("PHONE","")
         val password = preferences.getString("PASSWORD","")
         editTextPhone.setText(phone)

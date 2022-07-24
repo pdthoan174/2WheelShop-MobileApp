@@ -6,7 +6,6 @@ import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.example.encare.R
