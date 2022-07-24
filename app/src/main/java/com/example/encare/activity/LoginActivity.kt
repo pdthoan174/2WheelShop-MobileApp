@@ -1,10 +1,12 @@
 package com.example.encare.activity
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+
 import android.widget.Toast
+import androidx.preference.PreferenceManager
 import com.example.encare.R
 import com.example.encare.api.RetrofitClient
 import com.example.encare.models.LoginResponse
@@ -16,27 +18,31 @@ import kotlinx.android.synthetic.main.activity_login.editTextPhone
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.ArrayList
 import java.util.regex.Pattern
 
 class LoginActivity : AppCompatActivity() {
 
+    private val preferences:SharedPreferences = this.getSharedPreferences("Info User", MODE_PRIVATE)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
 
-        btn_login.setOnClickListener {
+        btn_login?.setOnClickListener {
             val phone = editTextPhone.text.toString().trim()
-            val password = editTextPassword.text.toString().trim()
+            val password:String = editTextPassword?.text.toString().trim()
 //            if (validate(phone, password)){
 //                sendRequestLogin(phone, password)
 //
 //            }
             sendRequestLogin("0987654321","0987654321")
+            storageInfoUser("0987654321", "password")
+
+            getInfoUser()
+
         }
-        sign_up.setOnClickListener {
+        sign_up?.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
 //            finishAffinity()
         }
@@ -77,7 +83,7 @@ class LoginActivity : AppCompatActivity() {
                         startActivity(intent)
                     }else{
                         Toast.makeText(applicationContext, "Login Fail",Toast.LENGTH_SHORT).show()
-                        errorMessageLogin.text = "Username or password incorrect"
+                        errorMessageLogin?.text = "Username or password incorrect"
                     }
                 }
                 override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
@@ -91,7 +97,7 @@ class LoginActivity : AppCompatActivity() {
         val passwordRegex = Pattern.compile("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}\$")
 
         if(!phoneRegex.matcher(phoneNumber).matches()){
-            errorMessageLogin.setText("Invalid phone number")
+            errorMessageLogin?.setText("Invalid phone number")
             return false
         }
 //        else if (!passwordRegex.matcher(password).matches()){
@@ -99,8 +105,24 @@ class LoginActivity : AppCompatActivity() {
 //            return false
 //        }
         else{
-            errorMessageLogin.setText("")
+            errorMessageLogin?.setText("")
             return true
         }
+    }
+
+    fun storageInfoUser(username:String, password:String ) {
+
+        // Kich hoat trang thai EDIT moi EDIT duoc
+        val editor = preferences.edit()
+        editor.putString("PHONE",username)
+        editor.putString("PASSWORD",password)
+        editor.apply()
+    }
+
+    fun getInfoUser(){
+        val phone = preferences.getString("PHONE","")
+        val password = preferences.getString("PASSWORD","")
+        editTextPhone.setText(phone)
+        editTextPassword.setText(password)
     }
 }

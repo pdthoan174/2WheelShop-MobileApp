@@ -8,7 +8,6 @@ import android.os.Bundle
 
 
 import android.widget.Toast
-import androidx.preference.PreferenceManager
 import com.bumptech.glide.Glide
 import com.example.encare.R
 
@@ -95,12 +94,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun storageInfoUser() {
-        val preferences = PreferenceManager.getDefaultSharedPreferences(this)
-        // put data
-        val editor = preferences.edit()
-        editor.putString("KEY","VALUE")
-        editor.apply()
-    }
+
 
 }
