@@ -38,7 +38,7 @@ class LoginActivity : AppCompatActivity() {
 //
 //            }
 
-            // luu tai khoan khi bam luu dang nhap vao bo nho
+            // luu tai khoan khi bam luu dang nhap vao bo nho dien thoai
             val check:Boolean = rememberLogin.isChecked
             if (check){
                 storageInfoUser(phone, password)
