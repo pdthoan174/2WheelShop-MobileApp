@@ -43,7 +43,7 @@ class LoginActivity : AppCompatActivity() {
             if (check){
                 storageInfoUser(phone, password)
             }
-            sendRequestLogin("0987654321","0987654321")
+            sendRequestLogin(phone,password)
 
         }
         sign_up?.setOnClickListener {
@@ -115,6 +115,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun storageInfoUser(username:String, password:String ) {
+
         val preferences:SharedPreferences = this.getSharedPreferences("Info User", Context.MODE_PRIVATE)
 
         // Kich hoat trang thai EDIT moi EDIT duoc

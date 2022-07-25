@@ -75,7 +75,7 @@ class RegisterActivity : AppCompatActivity() {
         val phoneRegex = Pattern.compile("^(0)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}\$")
         val passwordRegex = Pattern.compile("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}\$")
 
-        if (name.isEmpty() || name.length < 10){
+        if (name.isEmpty() || name.length < 5){
             errorMessage.setText("Your full name not null")
             return false
 
@@ -83,7 +83,8 @@ class RegisterActivity : AppCompatActivity() {
             errorMessage.setText("Invalid phone number")
             return false
 
-        }else if (!passwordRegex.matcher(password).matches()){
+        }
+        else if (!passwordRegex.matcher(password).matches()){
             errorMessage.setText("Password Minimum 8 characters, at least one letter and one number")
             return false
 

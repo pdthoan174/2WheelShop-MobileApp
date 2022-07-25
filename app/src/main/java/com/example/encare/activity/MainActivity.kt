@@ -60,12 +60,21 @@ class MainActivity : AppCompatActivity() {
                         Toast.makeText(applicationContext, "Get profile success", Toast.LENGTH_SHORT).show()
                         textName.text = infoProfile?.data?.accountResponse?.name
                         var avatar = infoProfile?.data?.accountResponse?.avatar
-//                        loadImage().execute(avatar)
-                        Glide.with(applicationContext)
-                            .load(avatar)
+
+                        if (avatar == null){
+                            avt1.setImageResource(R.drawable.avatar)
+                        }else{
+//                            load using code handmade
+//                            loadImage().execute(avatar)
+
+                            // load using Glide
+                            Glide.with(applicationContext)
+                                .load(avatar)
+                                .error(R.drawable.avatar)
 //                            .override(20,20)
 //                            .placeholder(R.drawable.load)
-                            .into(avt1)
+                                .into(avt1)
+                        }
 
                     }else{
                         Toast.makeText(applicationContext, "Get profile Fail", Toast.LENGTH_SHORT).show()
