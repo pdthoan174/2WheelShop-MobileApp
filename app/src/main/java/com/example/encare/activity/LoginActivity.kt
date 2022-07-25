@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 
 import android.widget.Toast
 import androidx.preference.PreferenceManager
@@ -22,7 +23,8 @@ import retrofit2.Response
 import java.util.regex.Pattern
 
 class LoginActivity : AppCompatActivity() {
-
+    // bien global dung de luu token khi dang nhap
+    var token:String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,12 +40,11 @@ class LoginActivity : AppCompatActivity() {
 //
 //            }
 
+
             // luu tai khoan khi bam luu dang nhap vao bo nho dien thoai
-            val check:Boolean = rememberLogin.isChecked
-            if (check){
-                storageInfoUser(phone, password)
-            }
-            sendRequestLogin(phone,password)
+            val saveLogin:Boolean = rememberLogin.isChecked
+
+            sendRequestLogin(phone,password,saveLogin)
 
         }
         sign_up?.setOnClickListener {
@@ -52,10 +53,9 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    // bien global dung de luu token khi dang nhap
-    var token:String = ""
 
-    fun sendRequestLogin(phone: String, password: String) {
+
+    fun sendRequestLogin(phone: String, password: String, saveLogin: Boolean) {
         val request = UserRequestLogin()
         request.phone = phone
         request.password = password
@@ -69,7 +69,8 @@ class LoginActivity : AppCompatActivity() {
                     // description: trong RegisterResponse.kt
                     val postResult = response.body()
                     if (postResult != null){
-                        // du lieu truyen sang Home
+                        // du lieu user truyen sang Home
+/*
                         val accountId = postResult.data?.accountId
                         val role = postResult.data?.role
                         val password = postResult.data?.password
@@ -79,10 +80,16 @@ class LoginActivity : AppCompatActivity() {
                         if (accountId != null && role != null && password != null && token != null){
                             info = User(accountId,role,password,token)
                         }
+ */
+                        token = "Bearer "+postResult.data?.token.toString()
+                        saveToken()
+                        if (saveLogin){
+                            storageInfoUser(phone,password)
+                        }
 
                         val intent = Intent(this@LoginActivity, MainActivity::class.java)
+//                        intent.putExtra("info",info)
 
-                        intent.putExtra("info",info)
                         Toast.makeText(applicationContext, "Login Success",Toast.LENGTH_SHORT).show()
                         startActivity(intent)
                     }else{
@@ -114,10 +121,8 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    fun storageInfoUser(username:String, password:String ) {
-
+    fun storageInfoUser(username:String, password:String) {
         val preferences:SharedPreferences = this.getSharedPreferences("Info User", Context.MODE_PRIVATE)
-
         // Kich hoat trang thai EDIT moi EDIT duoc
         val editor = preferences.edit()
         editor.putString("PHONE",username)
@@ -127,10 +132,16 @@ class LoginActivity : AppCompatActivity() {
 
     fun getInfoUser(){
         val preferences:SharedPreferences = this.getSharedPreferences("Info User", Context.MODE_PRIVATE)
-
         val phone = preferences.getString("PHONE","")
         val password = preferences.getString("PASSWORD","")
         editTextPhone.setText(phone)
         editTextPassword.setText(password)
+    }
+
+    fun saveToken(){
+        val preferences:SharedPreferences = this.getSharedPreferences("Info User", Context.MODE_PRIVATE)
+        val editor = preferences.edit()
+        editor.putString("TOKEN",token)
+        editor.apply()
     }
 }
