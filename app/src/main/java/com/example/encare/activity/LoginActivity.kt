@@ -83,7 +83,7 @@ class LoginActivity : AppCompatActivity() {
                             storageInfoUser(phone,password)
                         }
 
-                        val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                        val intent = Intent(this@LoginActivity, HomeActivity::class.java)
 //                        intent.putExtra("info",info)
 
                         Toast.makeText(applicationContext, "Login Success",Toast.LENGTH_SHORT).show()
