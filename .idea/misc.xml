@@ -8,8 +8,10 @@
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/drawable/category_item.xml" value="0.4259541984732824" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/drawable/home_icon.xml" value="0.38333333333333336" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/drawable/ic_baseline_date_range_24.xml" value="0.4111111111111111" />
+        <entry key="..\:/Android PJ/EnCare/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.4359375" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/drawable/ic_baseline_message_24.xml" value="0.4111111111111111" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.4111111111111111" />
+        <entry key="..\:/Android PJ/EnCare/app/src/main/res/drawable/ic_baseline_person_outline_25.xml" value="0.5" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/drawable/ic_bone.xml" value="0.38333333333333336" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/drawable/ic_calendar.xml" value="0.38333333333333336" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/drawable/ic_date.xml" value="0.38333333333333336" />
@@ -31,11 +33,16 @@
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/drawable/search_bg.xml" value="0.4259541984732824" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/font/poppins_semibold.xml" value="0.2953703703703704" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout-land/activity_login.xml" value="0.4" />
+        <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/activity_home.xml" value="0.4" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/activity_login.xml" value="0.4" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/activity_main.xml" value="0.4" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/activity_main2.xml" value="0.4" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/activity_register.xml" value="0.41171875" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/category_item.xml" value="0.8" />
+        <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/fragment_apointments.xml" value="0.41171875" />
+        <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/fragment_home.xml" value="0.41171875" />
+        <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/fragment_message.xml" value="0.41171875" />
+        <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/fragment_profile.xml" value="0.41171875" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/list_appointment.xml" value="0.4" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/switch_item.xml" value="0.58125" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/menu/bottom_nav_menu.xml" value="0.4" />
