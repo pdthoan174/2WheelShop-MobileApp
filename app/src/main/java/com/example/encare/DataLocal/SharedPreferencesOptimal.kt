@@ -6,12 +6,12 @@ import android.content.Context
 // Tạo class SharedPreferencesOptimal ở dạng singleton như sau
 // Dùng để khởi tạo 1 lần cho cả chượng trình sử dụng
 
-object SharePreferencesOptimal {
-    private const val PREFS_USER:String = "PREFS_USER"
+object SharedPreferencesOptimal {
+    private const val INFO_USER:String = "INFO_USER"
 
     //App.shared laf context cua ung dung
     // val preferences:SharedPreferences = this.getSharedPreferences("Info User", Context.MODE_PRIVATE) : Code cũ
-    private val sharedPreferences = App.shared.getSharedPreferences(PREFS_USER, Context.MODE_PRIVATE)
+    private val sharedPreferences = App.shared.getSharedPreferences(INFO_USER, Context.MODE_PRIVATE)
 
     // Generic Functions
     // Vi sử dụng Generic Function nên khi data truyền vào kiểu nào thì sẻ lấy ra theo kiểu đó

@@ -1,18 +1,14 @@
 package com.example.encare.activity
 
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 
 import android.widget.Toast
-import androidx.preference.PreferenceManager
+import com.example.encare.DataLocal.SharedPreferencesOptimal
 import com.example.encare.R
 import com.example.encare.api.RetrofitClient
 import com.example.encare.models.LoginResponse
-import com.example.encare.models.User
 import com.example.encare.models.UserRequestLogin
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_login.editTextPassword
@@ -122,26 +118,29 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun storageInfoUser(username:String, password:String) {
-        val preferences:SharedPreferences = this.getSharedPreferences("Info User", Context.MODE_PRIVATE)
+//        val preferences:SharedPreferences = this.getSharedPreferences("Info User", Context.MODE_PRIVATE)
         // Kich hoat trang thai EDIT moi EDIT duoc
-        val editor = preferences.edit()
-        editor.putString("PHONE",username)
-        editor.putString("PASSWORD",password)
-        editor.apply()
+//        val editor = preferences.edit()
+        SharedPreferencesOptimal.put("PHONE",username)
+        SharedPreferencesOptimal.put("PASSWORD", password)
+
     }
 
     fun getInfoUser(){
-        val preferences:SharedPreferences = this.getSharedPreferences("Info User", Context.MODE_PRIVATE)
-        val phone = preferences.getString("PHONE","")
-        val password = preferences.getString("PASSWORD","")
+//        val preferences:SharedPreferences = this.getSharedPreferences("Info User", Context.MODE_PRIVATE)
+        val phone = SharedPreferencesOptimal.get("PHONE",String::class.java)
+        val password = SharedPreferencesOptimal.get("PASSWORD", String::class.java)
         editTextPhone.setText(phone)
-        editTextPassword.setText(password)
+        editTextPassword?.setText(password)
     }
 
     fun saveToken(){
-        val preferences:SharedPreferences = this.getSharedPreferences("Info User", Context.MODE_PRIVATE)
-        val editor = preferences.edit()
-        editor.putString("TOKEN",token)
-        editor.apply()
+//        val preferences:SharedPreferences = this.getSharedPreferences("Info User", Context.MODE_PRIVATE)
+//        val editor = preferences.edit()
+        SharedPreferencesOptimal.put("TOKEN", token)
+
     }
+
+
+
 }

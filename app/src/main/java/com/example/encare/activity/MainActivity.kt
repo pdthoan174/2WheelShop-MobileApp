@@ -1,29 +1,22 @@
 package com.example.encare.activity
 
-import android.content.Context
-import android.content.SharedPreferences
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 
 import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.example.encare.DataLocal.SharedPreferencesOptimal
 import com.example.encare.R
 
 import com.example.encare.api.RetrofitClient
 
 import com.example.encare.models.ProfileResponse
-import com.example.encare.models.User
-import kotlinx.android.synthetic.main.activity_login.*
 
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.net.URL
 
 class MainActivity : AppCompatActivity() {
 
@@ -51,15 +44,14 @@ class MainActivity : AppCompatActivity() {
 //        }
 //    }
 
-    fun getToken(){
-        val preferences: SharedPreferences = this.getSharedPreferences("Info User", Context.MODE_PRIVATE)
-        token = preferences.getString("TOKEN", "").toString()
+    private fun getToken(){
+        token = SharedPreferencesOptimal.get("TOKEN", String::class.java)
         Log.i("hihi",token)
         test.text = token
-
     }
 
-    fun getProfile(){
+
+    private fun getProfile(){
         RetrofitClient.instance.getProfile(token)
             .enqueue(object: Callback<ProfileResponse> {
                 override fun onResponse(
