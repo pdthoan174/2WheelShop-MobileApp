@@ -8,6 +8,7 @@ import android.widget.Toast
 import com.example.encare.DataLocal.SharedPreferencesOptimal
 import com.example.encare.R
 import com.example.encare.api.RetrofitClient
+import com.example.encare.fragments.HomeFragment
 import com.example.encare.models.LoginResponse
 import com.example.encare.models.UserRequestLogin
 import kotlinx.android.synthetic.main.activity_login.*
@@ -83,7 +84,7 @@ class LoginActivity : AppCompatActivity() {
                             storageInfoUser(phone,password)
                         }
 
-                        val intent = Intent(this@LoginActivity, HomeActivity::class.java)
+                        val intent = Intent(this@LoginActivity, MainActivity::class.java)
 //                        intent.putExtra("info",info)
 
                         Toast.makeText(applicationContext, "Login Success",Toast.LENGTH_SHORT).show()

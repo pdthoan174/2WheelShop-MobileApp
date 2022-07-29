@@ -5,10 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.MainActivity">
-    <FrameLayout
-        android:id="@+id/fragment_container"
+<!--    <FrameLayout-->
+<!--        android:id="@+id/fragment_container"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_above="@+id/bottom_navigation"/>-->
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_pager_2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="horizontal"
         android:layout_above="@+id/bottom_navigation"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -18,11 +25,11 @@
         android:layout_alignParentBottom="true"
         android:background="?android:attr/windowBackground"
         app:itemBackground="@color/gray"
+        app:itemIconSize="25dp"
         app:itemIconTint="@drawable/nav_item_color_selected"
-        app:itemTextColor="@drawable/nav_item_color_selected"
         app:itemTextAppearanceActive="@style/BottomNavigationViewTextStyle"
         app:itemTextAppearanceInactive="@style/BottomNavigationViewTextStyle"
-        app:itemIconSize="25dp"
+        app:itemTextColor="@drawable/nav_item_color_selected"
         app:labelVisibilityMode="selected"
         app:menu="@menu/bottom_nav_menu" />
 
