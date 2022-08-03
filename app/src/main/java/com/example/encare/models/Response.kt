@@ -7,11 +7,11 @@ open class Response {
 
     @SerializedName("status")
     @Expose
-    private var status:Int? = null
+    var status:Int? = null
 
     @SerializedName("description")
     @Expose
-    private var description: String? = null
+    var description: String? = null
 
 
 }

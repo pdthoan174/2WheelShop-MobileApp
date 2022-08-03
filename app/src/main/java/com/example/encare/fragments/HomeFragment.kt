@@ -14,10 +14,7 @@ import com.example.encare.DataLocal.SharedPreferencesOptimal
 import com.example.encare.R
 import com.example.encare.adapters.DoctorAdapter
 import com.example.encare.api.RetrofitClient
-import com.example.encare.models.Doctor
-import com.example.encare.models.DoctorResponse
-import com.example.encare.models.ProfileResponse
-import com.example.encare.models.ResponseAccount
+import com.example.encare.models.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -94,23 +91,30 @@ class HomeFragment : Fragment() {
     private fun listDoctor(){
 
         RetrofitClient.instance.getListDoctor(token,25)
-            .enqueue(object: Callback<DoctorResponse>{
+            .enqueue(object: Callback<DataDoctor>{
                 override fun onResponse(
-                    call: Call<DoctorResponse>,
-                    response: Response<DoctorResponse>
+                    call: Call<DataDoctor>,
+                    response: Response<DataDoctor>
                 ) {
-//                    val listDoctor:ArrayList<Doctor>?
-                    var listDoctor= ArrayList<DoctorResponse>()
 
-//                    listDoctor = response.body()
+                    val list = response.body()?.data?.get(0)?.doctorId
+                    var listDoctor: ArrayList<Data> = ArrayList(response.body()?.data)
+
+                    val adapter: DoctorAdapter = DoctorAdapter(listDoctor)
+
+                    list_doctor.adapter = adapter
+                    list_doctor.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false)
+
+
 
 
                     Log.i("hihi", listDoctor.toString())
+                    Toast.makeText(mContext, "Call List Doctor Success",Toast.LENGTH_SHORT).show()
 
 
                 }
 
-                override fun onFailure(call: Call<DoctorResponse>, t: Throwable) {
+                override fun onFailure(call: Call<DataDoctor>, t: Throwable) {
                     Toast.makeText(mContext, "Call List Doctor Fail",Toast.LENGTH_SHORT).show()
 
                 }
@@ -119,11 +123,7 @@ class HomeFragment : Fragment() {
 
 
 
-//        val adapter: DoctorAdapter = DoctorAdapter()
-//        adapter.setListDoctor(listDoctor)
-//
-//        list_doctor.adapter = adapter
-//        list_doctor.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false)
+
 
     }
 

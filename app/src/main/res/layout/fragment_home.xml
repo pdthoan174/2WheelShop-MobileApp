@@ -450,12 +450,12 @@
                     android:textColor="#060606"
                     android:textSize="15dp" />
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/list_doctor"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/doctor_title"
-                        />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/list_doctor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_below="@+id/doctor_title" />
 
 <!--                <androidx.constraintlayout.widget.ConstraintLayout-->
 <!--                    android:layout_width="wrap_content"-->

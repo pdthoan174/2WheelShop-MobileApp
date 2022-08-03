@@ -3,12 +3,14 @@ package com.example.encare.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 
 import android.widget.Toast
 import com.example.encare.DataLocal.SharedPreferencesOptimal
 import com.example.encare.R
 import com.example.encare.api.RetrofitClient
 import com.example.encare.fragments.HomeFragment
+import com.example.encare.models.DataX
 import com.example.encare.models.LoginResponse
 import com.example.encare.models.UserRequestLogin
 import kotlinx.android.synthetic.main.activity_login.*
@@ -18,6 +20,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.regex.Pattern
+import kotlin.math.log
 
 class LoginActivity : AppCompatActivity() {
     // bien global dung de luu token khi dang nhap
@@ -67,21 +70,27 @@ class LoginActivity : AppCompatActivity() {
                     val postResult = response.body()
                     if (postResult != null){
                         // du lieu user truyen sang Home
-/*
+
                         val accountId = postResult.data?.accountId
                         val role = postResult.data?.role
                         val password = postResult.data?.password
                         token = postResult.data?.token.toString()
-                        var info: User? = null
+
+                        val info:LoginResponse? = null
+
+                        var data: DataX? = null
 
                         if (accountId != null && role != null && password != null && token != null){
-                            info = User(accountId,role,password,token)
+                            data = DataX(accountId, password, role,  token)
                         }
- */
+//                        Log.i("hihi", data.toString())
+
                         token = "Bearer "+postResult.data?.token.toString()
                         saveToken()
                         if (saveLogin){
-                            storageInfoUser(phone,password)
+                            if (password != null) {
+                                storageInfoUser(phone,password)
+                            }
                         }
 
                         val intent = Intent(this@LoginActivity, MainActivity::class.java)

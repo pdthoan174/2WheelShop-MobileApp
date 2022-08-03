@@ -44,7 +44,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun getToken(){
         token = SharedPreferencesOptimal.get("TOKEN", String::class.java)
-        Log.i("hihi",token)
+//        Log.i("hihi",token)
 
     }
 

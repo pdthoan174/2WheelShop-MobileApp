@@ -30,7 +30,7 @@ interface ApiServices {
     @GET("api/user/listDoctor")
     fun getListDoctor(@Header("Authorization") authToken:String, @Query("categoryId") categoryId:Int
 
-    ):Call<DoctorResponse>
+    ):Call<DataDoctor>
 
 
 
