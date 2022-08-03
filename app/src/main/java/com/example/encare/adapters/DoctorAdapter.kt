@@ -26,9 +26,6 @@ class DoctorAdapter(private val listDoctor: ArrayList<Data>):RecyclerView.Adapte
     // binding data tu doi tuong len viewHolder
     override fun onBindViewHolder(holder: DoctorAdapterHolder, position: Int) {
         val doctor = listDoctor.get(position)
-        if (doctor != null) {
-            return
-        }
         // set du lieu cho cac thanh phan
         //tao 8 doi tuong theo trong list_doctor.xml
         holder.nameDoctor.text = doctor.accountResponse?.name

@@ -35,13 +35,11 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         getToken()
-        getProfile()
-
         listDoctor()
+        getProfile()
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false)
-
     }
 
     private fun getToken(){
@@ -63,10 +61,8 @@ class HomeFragment : Fragment() {
                     test.text = accountResponse?.phone
 
                     if (response.isSuccessful){
-//                        Toast.makeText(mContext, "Get profile success", Toast.LENGTH_SHORT).show()
                         textName.text = accountResponse?.name
                         val avatar = accountResponse?.avatar
-
                         if (avatar == null){
                             avt1.setImageResource(R.drawable.avatar)
                         }else{
@@ -74,8 +70,6 @@ class HomeFragment : Fragment() {
                             Glide.with(mContext)
                                 .load(avatar)
                                 .error(R.drawable.avatar)
-                        //      .override(20,20)
-                        //      .placeholder(R.drawable.load)
                                 .into(avt1)
                         }
                     }else{
@@ -89,42 +83,26 @@ class HomeFragment : Fragment() {
             })
     }
     private fun listDoctor(){
-
         RetrofitClient.instance.getListDoctor(token,25)
             .enqueue(object: Callback<DataDoctor>{
                 override fun onResponse(
                     call: Call<DataDoctor>,
                     response: Response<DataDoctor>
                 ) {
-
                     val list = response.body()?.data?.get(0)?.doctorId
                     var listDoctor: ArrayList<Data> = ArrayList(response.body()?.data)
 
                     val adapter: DoctorAdapter = DoctorAdapter(listDoctor)
-
                     list_doctor.adapter = adapter
                     list_doctor.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false)
 
-
-
-
                     Log.i("hihi", listDoctor.toString())
                     Toast.makeText(mContext, "Call List Doctor Success",Toast.LENGTH_SHORT).show()
-
-
                 }
 
                 override fun onFailure(call: Call<DataDoctor>, t: Throwable) {
                     Toast.makeText(mContext, "Call List Doctor Fail",Toast.LENGTH_SHORT).show()
-
                 }
-
             })
-
-
-
-
-
     }
-
 }
