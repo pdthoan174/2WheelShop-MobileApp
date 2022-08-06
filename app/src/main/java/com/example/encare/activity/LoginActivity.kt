@@ -1,15 +1,19 @@
 package com.example.encare.activity
 
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.Network
+import android.net.NetworkInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 
 import android.widget.Toast
 import com.example.encare.DataLocal.SharedPreferencesOptimal
 import com.example.encare.R
 import com.example.encare.api.RetrofitClient
-import com.example.encare.fragments.HomeFragment
 import com.example.encare.models.DataX
 import com.example.encare.models.LoginResponse
 import com.example.encare.models.UserRequestLogin
@@ -20,7 +24,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.regex.Pattern
-import kotlin.math.log
+
 
 class LoginActivity : AppCompatActivity() {
     // bien global dung de luu token khi dang nhap
@@ -29,8 +33,15 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
         getInfoUser()
+        Log.i("hihi", isNetworkAvailable(this).toString())
+
+        if (!isNetworkAvailable(this)){
+            val toast = Toast.makeText(this, "Please connect internet and try again",Toast.LENGTH_LONG)
+            toast.setGravity(Gravity.TOP, 20, 30)
+            toast.show()
+        }
+
 
         btn_login?.setOnClickListener {
             val phone = editTextPhone.text.toString().trim()
@@ -39,11 +50,8 @@ class LoginActivity : AppCompatActivity() {
 //                sendRequestLogin(phone, password)
 //
 //            }
-
-
             // luu tai khoan khi bam luu dang nhap vao bo nho dien thoai
             val saveLogin:Boolean = rememberLogin.isChecked
-
             sendRequestLogin(phone,password,saveLogin)
 
         }
@@ -52,8 +60,6 @@ class LoginActivity : AppCompatActivity() {
 //            finishAffinity()
         }
     }
-
-
 
     fun sendRequestLogin(phone: String, password: String, saveLogin: Boolean) {
         val request = UserRequestLogin()
@@ -73,7 +79,7 @@ class LoginActivity : AppCompatActivity() {
 
                         val accountId = postResult.data?.accountId
                         val role = postResult.data?.role
-                        val password = postResult.data?.password
+
                         token = postResult.data?.token.toString()
 
                         val info:LoginResponse? = null
@@ -150,7 +156,12 @@ class LoginActivity : AppCompatActivity() {
         SharedPreferencesOptimal.put("TOKEN", token)
 
     }
-
+    // kiểm tra ket noi internet
+    fun isNetworkAvailable(context: Context):Boolean{
+        val connectivityManager:ConnectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetworkInfo: NetworkInfo? = connectivityManager.getActiveNetworkInfo()
+        return activeNetworkInfo!= null && activeNetworkInfo.isConnected
+    }
 
 
 }

@@ -90,23 +90,36 @@
                     app:layout_constraintStart_toStartOf="@+id/avt" />
 
                 <EditText
-                    android:layout_width="320dp"
+                    android:id="@+id/search"
+                    android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="5dp"
-                    app:layout_constraintStart_toStartOf="@+id/avt"
-                    app:layout_constraintTop_toBottomOf="@+id/findInHome"
                     android:background="@drawable/search_bg"
-                    android:drawableEnd="@drawable/ic_search"
-                    android:paddingEnd="10dp"
+                    android:drawablePadding="10dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:hint="Search..."
+                    android:imeOptions="actionGo"
                     android:paddingStart="15dp"
                     android:paddingTop="6dp"
-                    android:textSize="15sp"
-                    android:hint="Search..."
-
+                    android:paddingEnd="10dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
                     android:textColor="#919090"
-                    android:fontFamily="@font/poppins_semibold"
                     android:textColorHint="@color/white"
-                    android:drawablePadding="10dp"
+                    android:textSize="15sp"
+
+                    app:layout_constraintTop_toBottomOf="@+id/findInHome" />
+
+                <Button
+                    android:layout_width="35dp"
+                    android:layout_height="45dp"
+
+                    android:layout_marginEnd="5dp"
+                    android:backgroundTint="#B4E6F0F1"
+                    app:layout_constraintBottom_toBottomOf="@+id/search"
+                    app:layout_constraintRight_toRightOf="@+id/search"
+                    app:layout_constraintTop_toTopOf="@+id/search"
+                    android:drawableBottom="@drawable/ic_search"
                     />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -128,6 +141,7 @@
                 android:layout_height="120dp"
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
+                android:layout_gravity="center"
                 >
 
                 <TextView
@@ -139,164 +153,173 @@
                     android:textColor="#060606"
                     android:textSize="15dp" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/itemCategory1"
-                    android:layout_width="81dp"
-                    android:layout_height="85dp"
-                    android:layout_below="@+id/category">
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-
-                        app:cardCornerRadius="5dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="#F4F3F3"
-                            android:padding="5dp"
-                            android:src="@drawable/eye" />
-
-                    </androidx.cardview.widget.CardView>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins_medium"
-                        android:gravity="center"
-                        android:text="Ophthalmology"
-                        android:textColor="@color/black"
-                        android:textSize="10.2sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/itemCategory2"
-                    android:layout_width="81dp"
-                    android:layout_height="85dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_below="@+id/category"
-                    android:layout_toRightOf="@id/itemCategory1"
-                    android:layout_marginStart="10dp">
+                    >
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
 
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:cardCornerRadius="5dp">
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/itemCategory1"
+                        android:layout_width="81dp"
+                        android:layout_height="85dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_weight="1"
+                        >
 
-                        <ImageView
-                            android:background="#F4F3F3"
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+
+                            app:cardCornerRadius="5dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="#F4F3F3"
+                                android:padding="5dp"
+                                android:src="@drawable/eye" />
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:padding="5dp"
-                            android:src="@drawable/xuong1" />
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_medium"
+                            android:gravity="center"
+                            android:text="Ophthalmology"
+                            android:textColor="@color/black"
+                            android:textSize="10.2sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent" />
 
-                    </androidx.cardview.widget.CardView>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins_medium"
-                        android:gravity="center"
-                        android:text="Musculoskeletal"
-                        android:textColor="@color/black"
-                        android:textSize="10sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" />
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/itemCategory2"
+                        android:layout_width="81dp"
+                        android:layout_height="85dp"
+                        android:layout_below="@+id/category"
+                        android:layout_weight="1"
+                        android:layout_marginStart="10dp"
+                        android:layout_toRightOf="@id/itemCategory1">
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/itemCategory4"
-                    android:layout_width="81dp"
-                    android:layout_height="85dp"
-                    android:layout_below="@+id/category"
-                    android:layout_toRightOf="@id/itemCategory3"
-                    android:layout_marginStart="10dp">
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
+                            app:cardCornerRadius="5dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
 
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:cardCornerRadius="5dp">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="#F4F3F3"
+                                android:padding="5dp"
+                                android:src="@drawable/xuong1" />
 
-                        <ImageView
-                            android:background="#F4F3F3"
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:padding="5dp"
-                            android:src="@drawable/more" />
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_medium"
+                            android:gravity="center"
+                            android:text="Musculoskeletal"
+                            android:textColor="@color/black"
+                            android:textSize="10sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    </androidx.cardview.widget.CardView>
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/itemCategory3"
+                        android:layout_width="81dp"
+                        android:layout_height="85dp"
+                        android:layout_below="@+id/category"
+                        android:layout_weight="1"
+                        android:layout_marginStart="10dp"
+                        android:layout_toRightOf="@id/itemCategory2">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins_medium"
-                        android:gravity="center"
-                        android:text="More"
-                        android:textColor="@color/black"
-                        android:textSize="10sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" />
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                            app:cardCornerRadius="5dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/itemCategory3"
-                    android:layout_width="81dp"
-                    android:layout_height="85dp"
-                    android:layout_below="@+id/category"
-                    android:layout_marginStart="10dp"
-                    android:layout_toRightOf="@id/itemCategory2">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="#F4F3F3"
+                                android:padding="5dp"
+                                android:src="@drawable/teech" />
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
+                        </androidx.cardview.widget.CardView>
 
-                        app:cardCornerRadius="5dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <ImageView
+                        <TextView
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="#F4F3F3"
-                            android:padding="5dp"
-                            android:src="@drawable/teech" />
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_medium"
+                            android:gravity="center"
+                            android:text="Odontology"
+                            android:textColor="@color/black"
+                            android:textSize="10sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    </androidx.cardview.widget.CardView>
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/itemCategory4"
+                        android:layout_width="81dp"
+                        android:layout_height="85dp"
+                        android:layout_below="@+id/category"
+                        android:layout_weight="1"
+                        android:layout_marginStart="10dp">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins_medium"
-                        android:gravity="center"
-                        android:text="Odontology"
-                        android:textColor="@color/black"
-                        android:textSize="10sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" />
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                            app:cardCornerRadius="5dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
 
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="#F4F3F3"
+                                android:padding="5dp"
+                                android:src="@drawable/more" />
 
+                        </androidx.cardview.widget.CardView>
 
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_medium"
+                            android:gravity="center"
+                            android:text="More"
+                            android:textColor="@color/black"
+                            android:textSize="10sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
             </RelativeLayout>
 
             <RelativeLayout
@@ -454,8 +477,12 @@
                     android:id="@+id/list_doctor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:layout_below="@+id/doctor_title"
                     android:orientation="horizontal"
-                    android:layout_below="@+id/doctor_title" />
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:itemCount="4"
+                    tools:listitem="@layout/list_doctor" />
 
 <!--                <androidx.constraintlayout.widget.ConstraintLayout-->
 <!--                    android:layout_width="wrap_content"-->
@@ -555,14 +582,14 @@
 
 
             </RelativeLayout>
-            <TextView
-                android:id="@+id/test"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="Test"
-                android:textColor="@color/black"
-                android:layout_gravity="center_horizontal"
-                />
+<!--            <TextView-->
+<!--                android:id="@+id/test"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:text="Test"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:layout_gravity="center_horizontal"-->
+<!--                />-->
         </LinearLayout>
     </ScrollView>
 

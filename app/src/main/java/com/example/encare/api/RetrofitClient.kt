@@ -1,38 +1,42 @@
 package com.example.encare.api
 
 import android.util.Base64
+import com.example.encare.DataLocal.SharedPreferencesOptimal
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-
+import java.util.concurrent.TimeUnit
 
 
 // Sington Pattern
 object RetrofitClient {
-    private val AUTH = "Basic"+ Base64.encodeToString("pdt123".toByteArray(), Base64.NO_WRAP)
+    // lay token trong bo nho
+    private val TOKEN = SharedPreferencesOptimal.get("TOKEN", String::class.java)
     private const val BASE_URL = "https://enclave-encare.herokuapp.com/"
 
-    // moi
+    // test catching data
+    private val READ_TIMEOUT = 5000
+    private val REQUEST_TIMEOUT = 5000
+    private val CONNECT_TIMEOUT = 5000
+    private val CACHE_CONTROL: String = "Cache-Control"
+
     // create logger
     private val logger = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
-
     // create OkHttpClient
-    private val okHttpClient = OkHttpClient.Builder()
-        .addInterceptor(logger).build()
-
     //Cu
-//    private val okHttpClient = OkHttpClient.Builder()
-//        .addInterceptor { chain ->
-//            val original = chain.request()
-//            val requestBuilder = original.newBuilder()
-//                .addHeader("Authorization", AUTH)
-//                .method(original.method, original.body)
-//
-//            val request = requestBuilder.build()
-//            chain.proceed(request)
-//        }.build()
+    private val okHttpClient = OkHttpClient.Builder()
+        .addInterceptor(logger)
+        .addInterceptor { chain ->
+            val original = chain.request()
+            val requestBuilder = original.newBuilder()
+                .addHeader("Authorization", TOKEN)
 
+            val request = requestBuilder.build()
+            chain.proceed(request)
+        }.build()
+
+    // lazy: Khi nao can moi tao
     val instance: ApiServices by lazy{
         val retrofit = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())

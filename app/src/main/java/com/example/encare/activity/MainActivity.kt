@@ -2,12 +2,10 @@ package com.example.encare.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
-import androidx.fragment.app.Fragment
 
 import androidx.viewpager2.widget.ViewPager2
 import com.example.encare.*
-import com.example.encare.adapters.ViewPagerAdapter
+import com.example.encare.adapters.ViewPagerMainAdapter
 import com.example.encare.fragments.AppointmentsFragment
 import com.example.encare.fragments.HomeFragment
 import com.example.encare.fragments.MessageFragment
@@ -24,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val viewPagerAdapter = ViewPagerAdapter(this)
+        val viewPagerAdapter = ViewPagerMainAdapter(this)
         // add 4 fragments vao ViewPager
         view_pager_2.adapter = viewPagerAdapter
 
@@ -33,8 +31,6 @@ class MainActivity : AppCompatActivity() {
             when (it.itemId){
                 R.id.nav_home -> {
                     view_pager_2.currentItem = 0
-//                    Toast.makeText(applicationContext, "Home Fragment",Toast.LENGTH_SHORT).show()
-//                    replaceFragment(homeFragment)
                 }
                 R.id.nav_appointment -> {
                     view_pager_2.currentItem = 1
@@ -72,11 +68,4 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-//    private fun replaceFragment(fragment: Fragment){
-//        if (fragment!=null){
-//            val transaction = supportFragmentManager.beginTransaction()
-//            transaction.replace(R.id.fragment_container, fragment)
-//            transaction.commit()
-//        }
-//    }
 }

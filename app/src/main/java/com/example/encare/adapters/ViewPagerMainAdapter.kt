@@ -8,7 +8,7 @@ import com.example.encare.fragments.HomeFragment
 import com.example.encare.fragments.MessageFragment
 import com.example.encare.fragments.ProfileFragment
 
-class ViewPagerAdapter(fragmentActivity: FragmentActivity):FragmentStateAdapter(fragmentActivity) {
+class ViewPagerMainAdapter(fragmentActivity: FragmentActivity):FragmentStateAdapter(fragmentActivity) {
     override fun getItemCount(): Int {
         return 4
     }

@@ -30,25 +30,30 @@ class HomeFragment : Fragment() {
         mContext = context
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        Log.i("hihi", "onCreate()")
+
+        getToken()
+        listDoctor()
+        getProfile()
+        super.onCreate(savedInstanceState)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        getToken()
-        listDoctor()
-        getProfile()
-
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
     private fun getToken(){
         token = SharedPreferencesOptimal.get("TOKEN", String::class.java)
-        Log.i("hihi",token)
+
     }
 
     private fun getProfile(){
-        RetrofitClient.instance.getProfile(token)
+        RetrofitClient.instance.getProfile()
             .enqueue(object: Callback<ProfileResponse> {
                 override fun onResponse(
                     call: Call<ProfileResponse>,
@@ -58,7 +63,7 @@ class HomeFragment : Fragment() {
                     val infoProfile = response.body()
 
                     val accountResponse = infoProfile?.data?.accountResponse
-                    test.text = accountResponse?.phone
+//                    test.text = accountResponse?.phone
 
                     if (response.isSuccessful){
                         textName.text = accountResponse?.name
@@ -83,20 +88,23 @@ class HomeFragment : Fragment() {
             })
     }
     private fun listDoctor(){
-        RetrofitClient.instance.getListDoctor(token,25)
+        RetrofitClient.instance.getListDoctor(25)
             .enqueue(object: Callback<DataDoctor>{
                 override fun onResponse(
                     call: Call<DataDoctor>,
                     response: Response<DataDoctor>
                 ) {
-                    val list = response.body()?.data?.get(0)?.doctorId
-                    var listDoctor: ArrayList<Data> = ArrayList(response.body()?.data)
+                    val list:ArrayList<Data>? = response.body()?.data
 
-                    val adapter: DoctorAdapter = DoctorAdapter(listDoctor)
-                    list_doctor.adapter = adapter
-                    list_doctor.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false)
+                    if (list != null){
+                        val adapter = DoctorAdapter(list)
+                        list_doctor.adapter = adapter
+                        list_doctor.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false)
 
-                    Log.i("hihi", listDoctor.toString())
+                    }
+
+
+//                    Log.i("hihi", list.toString())
                     Toast.makeText(mContext, "Call List Doctor Success",Toast.LENGTH_SHORT).show()
                 }
 

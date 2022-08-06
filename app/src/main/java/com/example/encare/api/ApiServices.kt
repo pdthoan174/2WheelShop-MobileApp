@@ -23,13 +23,16 @@ interface ApiServices {
 
     @GET("api/patient/myProfile")
     // them token vao header
-    fun getProfile(@Header("Authorization") authToken:String
+    fun getProfile():Call<ProfileResponse>
 
-    ):Call<ProfileResponse>
+//    @GET("api/user/listDoctor")
+//    fun getListDoctor(@Header("Authorization") authToken:String, @Query("categoryId") categoryId:Int
+//
+//    ):Call<DataDoctor>
 
     @GET("api/user/listDoctor")
-    fun getListDoctor(@Header("Authorization") authToken:String, @Query("categoryId") categoryId:Int
-
+    fun getListDoctor(
+        @Query("categoryId") categoryId:Int
     ):Call<DataDoctor>
 
 

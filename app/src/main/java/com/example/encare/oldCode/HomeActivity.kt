@@ -49,7 +49,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun getProfile(){
-        RetrofitClient.instance.getProfile(token)
+        RetrofitClient.instance.getProfile()
             .enqueue(object: Callback<ProfileResponse> {
                 override fun onResponse(
                     call: Call<ProfileResponse>,

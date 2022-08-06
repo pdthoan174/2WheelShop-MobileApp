@@ -1,13 +1,9 @@
 package com.example.encare.models
 import com.google.gson.annotations.SerializedName
 
-class DataDoctor:Response{
+class DataDoctor: Response() {
     @SerializedName("data")
     var data: ArrayList<Data>? = null
-    constructor(){
-        this.data = data
-    }
-
 
 }
 

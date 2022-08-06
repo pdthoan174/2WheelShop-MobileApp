@@ -1,17 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#03A9F4"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#fff"
     tools:context=".fragments.AppointmentsFragment">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ApointmentsFragment"
-        android:layout_centerInParent="true"
-        />
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:src="#6AE0D9"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-</RelativeLayout>
+                <TextView
+                    android:id="@+id/textHi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Back"
+                    android:textColor="@color/black"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:drawableStartCompat="@drawable/ic_arrow_back"
+                    />
+
+                <TextView
+                    android:id="@+id/findInHome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Find a appointment"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:layout_marginTop="10dp"
+
+                    app:layout_constraintTop_toBottomOf="@+id/textHi"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <EditText
+                    android:id="@+id/search"
+                    android:layout_width="320dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/findInHome"
+                    android:background="@drawable/search_bg"
+
+                    android:paddingEnd="10dp"
+                    android:paddingStart="15dp"
+                    android:paddingTop="6dp"
+                    android:textSize="15sp"
+                    android:hint="Search..."
+                    android:imeOptions="actionGo"
+                    android:textColor="#919090"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColorHint="@color/white"
+                    android:drawablePadding="10dp"
+                    />
+
+                <Button
+                    android:layout_width="35dp"
+                    android:layout_height="45dp"
+
+                    android:layout_marginEnd="5dp"
+                    android:backgroundTint="#B4E6F0F1"
+                    app:layout_constraintBottom_toBottomOf="@+id/search"
+                    app:layout_constraintRight_toRightOf="@+id/search"
+                    app:layout_constraintTop_toTopOf="@+id/search"
+                    android:drawableBottom="@drawable/ic_search"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.google.android.material.tabs.TabLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+            </com.google.android.material.tabs.TabLayout>
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </androidx.viewpager2.widget.ViewPager2>
+
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
