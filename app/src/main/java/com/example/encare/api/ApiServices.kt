@@ -35,6 +35,4 @@ interface ApiServices {
         @Query("categoryId") categoryId:Int
     ):Call<DataDoctor>
 
-
-
 }

@@ -21,4 +21,13 @@
         <item name="android:ellipsize">end</item>
         <item name="android:maxLines">1</item>
     </style>
+
+    <style name="TabLayoutStyle">
+        <item name="android:textStyle" > bold</item>
+        <item name="android:textSize"> 13sp</item>
+        <item name="android:textColor">#C60B0B0B</item>
+        <item name="android:fontFamily">@font/poppins_semibold</item>
+
+
+    </style>
 </resources>

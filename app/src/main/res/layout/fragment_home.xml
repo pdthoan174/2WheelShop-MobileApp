@@ -42,14 +42,25 @@
                     app:cardCornerRadius="10dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
-                    <pl.droidsonroids.gif.GifImageView
-                        android:id="@+id/avt1"
+
+                    <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:src="@drawable/load"
-                        android:scaleType="centerCrop"/>
+                        app:cardCornerRadius="10dp"
+                        android:layout_margin="2dp"
+                        >
+                        <pl.droidsonroids.gif.GifImageView
+                            android:id="@+id/avt1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:src="@drawable/load"
+                            android:scaleType="centerCrop"/>
+
+                    </androidx.cardview.widget.CardView>
+
                 </androidx.cardview.widget.CardView>
+
 
                 <TextView
                     android:id="@+id/textHi"
@@ -193,7 +204,7 @@
                             android:gravity="center"
                             android:text="Ophthalmology"
                             android:textColor="@color/black"
-                            android:textSize="10.2sp"
+                            android:textSize="9.7sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent" />
@@ -234,7 +245,7 @@
                             android:gravity="center"
                             android:text="Musculoskeletal"
                             android:textColor="@color/black"
-                            android:textSize="10sp"
+                            android:textSize="9.7sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent" />

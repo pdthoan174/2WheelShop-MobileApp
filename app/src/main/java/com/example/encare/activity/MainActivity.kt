@@ -13,11 +13,6 @@ import com.example.encare.fragments.ProfileFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    private var homeFragment = HomeFragment()
-    private var appointmentFragment = AppointmentsFragment()
-    private var messageFragment = MessageFragment()
-    private var profileFragment = ProfileFragment()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -49,7 +44,6 @@ class MainActivity : AppCompatActivity() {
         view_pager_2.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback(){
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
-
                 when(position){
                     0 -> {
                         bottom_navigation.menu.findItem(R.id.nav_home).isChecked = true

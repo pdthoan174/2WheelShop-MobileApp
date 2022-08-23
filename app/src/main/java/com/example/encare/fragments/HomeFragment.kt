@@ -31,11 +31,9 @@ class HomeFragment : Fragment() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        Log.i("hihi", "onCreate()")
-
         getToken()
-        listDoctor()
         getProfile()
+        listDoctor()
         super.onCreate(savedInstanceState)
     }
 
@@ -49,7 +47,6 @@ class HomeFragment : Fragment() {
 
     private fun getToken(){
         token = SharedPreferencesOptimal.get("TOKEN", String::class.java)
-
     }
 
     private fun getProfile(){
@@ -88,7 +85,7 @@ class HomeFragment : Fragment() {
             })
     }
     private fun listDoctor(){
-        RetrofitClient.instance.getListDoctor(25)
+        RetrofitClient.instance.getListDoctor(24)
             .enqueue(object: Callback<DataDoctor>{
                 override fun onResponse(
                     call: Call<DataDoctor>,
@@ -100,9 +97,7 @@ class HomeFragment : Fragment() {
                         val adapter = DoctorAdapter(list)
                         list_doctor.adapter = adapter
                         list_doctor.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false)
-
                     }
-
 
 //                    Log.i("hihi", list.toString())
                     Toast.makeText(mContext, "Call List Doctor Success",Toast.LENGTH_SHORT).show()

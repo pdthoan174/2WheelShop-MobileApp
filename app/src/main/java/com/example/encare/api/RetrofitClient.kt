@@ -1,19 +1,17 @@
 package com.example.encare.api
 
-import android.util.Base64
 import com.example.encare.DataLocal.SharedPreferencesOptimal
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.concurrent.TimeUnit
-
 
 // Sington Pattern
 object RetrofitClient {
+
     // lay token trong bo nho
     private val TOKEN = SharedPreferencesOptimal.get("TOKEN", String::class.java)
-    private const val BASE_URL = "https://enclave-encare.herokuapp.com/"
+    private const val BASE_URL = "http://127.0.0.1:8081/"
 
     // test catching data
     private val READ_TIMEOUT = 5000

@@ -28,7 +28,6 @@ import java.util.regex.Pattern
 
 class LoginActivity : AppCompatActivity() {
     // bien global dung de luu token khi dang nhap
-    var token:String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,23 +75,12 @@ class LoginActivity : AppCompatActivity() {
                     val postResult = response.body()
                     if (postResult != null){
                         // du lieu user truyen sang Home
-
                         val accountId = postResult.data?.accountId
                         val role = postResult.data?.role
 
-                        token = postResult.data?.token.toString()
-
-                        val info:LoginResponse? = null
-
-                        var data: DataX? = null
-
-                        if (accountId != null && role != null && password != null && token != null){
-                            data = DataX(accountId, password, role,  token)
-                        }
 //                        Log.i("hihi", data.toString())
-
-                        token = "Bearer "+postResult.data?.token.toString()
-                        saveToken()
+                        val token = "Bearer "+postResult.data?.token.toString()
+                        saveToken(token)
                         if (saveLogin){
                             if (password != null) {
                                 storageInfoUser(phone,password)
@@ -100,7 +88,6 @@ class LoginActivity : AppCompatActivity() {
                         }
 
                         val intent = Intent(this@LoginActivity, MainActivity::class.java)
-//                        intent.putExtra("info",info)
 
                         Toast.makeText(applicationContext, "Login Success",Toast.LENGTH_SHORT).show()
                         startActivity(intent)
@@ -150,10 +137,11 @@ class LoginActivity : AppCompatActivity() {
         editTextPassword?.setText(password)
     }
 
-    fun saveToken(){
+    fun saveToken(token: String){
 //        val preferences:SharedPreferences = this.getSharedPreferences("Info User", Context.MODE_PRIVATE)
 //        val editor = preferences.edit()
         SharedPreferencesOptimal.put("TOKEN", token)
+
 
     }
     // kiểm tra ket noi internet
