@@ -39,6 +39,7 @@
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/drawable/tab_indicator_background.xml" value="0.3611111111111111" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/font/poppins_semibold.xml" value="0.2953703703703704" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout-land/activity_login.xml" value="0.4" />
+        <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/activity_category.xml" value="0.264" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/activity_home.xml" value="0.4" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/activity_login.xml" value="0.4" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/activity_main.xml" value="0.4" />
@@ -48,7 +49,8 @@
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/fragment_apointments.xml" value="0.4" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/fragment_appointment_current.xml" value="0.264" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/fragment_appointment_history.xml" value="0.4" />
-        <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/fragment_home.xml" value="0.4" />
+        <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/fragment_category.xml" value="0.27734375" />
+        <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/fragment_home.xml" value="0.264" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/fragment_item_list.xml" value="0.56015625" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/fragment_message.xml" value="0.41171875" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/fragment_profile.xml" value="0.41171875" />

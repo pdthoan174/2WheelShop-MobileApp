@@ -5,12 +5,15 @@ import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.Network
 import android.net.NetworkInfo
+import android.net.wifi.WifiManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.format.Formatter
 import android.util.Log
 import android.view.Gravity
 
 import android.widget.Toast
+import androidx.core.content.getSystemService
 import com.example.encare.DataLocal.SharedPreferencesOptimal
 import com.example.encare.R
 import com.example.encare.api.RetrofitClient
@@ -40,7 +43,7 @@ class LoginActivity : AppCompatActivity() {
             toast.setGravity(Gravity.TOP, 20, 30)
             toast.show()
         }
-
+//        getIPAddress()
 
         btn_login?.setOnClickListener {
             val phone = editTextPhone.text.toString().trim()
@@ -52,7 +55,6 @@ class LoginActivity : AppCompatActivity() {
             // luu tai khoan khi bam luu dang nhap vao bo nho dien thoai
             val saveLogin:Boolean = rememberLogin.isChecked
             sendRequestLogin(phone,password,saveLogin)
-
         }
         sign_up?.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
@@ -73,11 +75,8 @@ class LoginActivity : AppCompatActivity() {
                 ) {
                     // description: trong RegisterResponse.kt
                     val postResult = response.body()
-                    if (postResult != null){
-                        // du lieu user truyen sang Home
-                        val accountId = postResult.data?.accountId
-                        val role = postResult.data?.role
 
+                    if (postResult != null){
 //                        Log.i("hihi", data.toString())
                         val token = "Bearer "+postResult.data?.token.toString()
                         saveToken(token)
@@ -88,7 +87,6 @@ class LoginActivity : AppCompatActivity() {
                         }
 
                         val intent = Intent(this@LoginActivity, MainActivity::class.java)
-
                         Toast.makeText(applicationContext, "Login Success",Toast.LENGTH_SHORT).show()
                         startActivity(intent)
                     }else{
@@ -97,7 +95,7 @@ class LoginActivity : AppCompatActivity() {
                     }
                 }
                 override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-
+                    Toast.makeText(applicationContext, "Call API Fail",Toast.LENGTH_SHORT).show()
                 }
             })
     }
@@ -126,7 +124,6 @@ class LoginActivity : AppCompatActivity() {
 //        val editor = preferences.edit()
         SharedPreferencesOptimal.put("PHONE",username)
         SharedPreferencesOptimal.put("PASSWORD", password)
-
     }
 
     fun getInfoUser(){
@@ -141,14 +138,20 @@ class LoginActivity : AppCompatActivity() {
 //        val preferences:SharedPreferences = this.getSharedPreferences("Info User", Context.MODE_PRIVATE)
 //        val editor = preferences.edit()
         SharedPreferencesOptimal.put("TOKEN", token)
-
-
     }
     // kiểm tra ket noi internet
     fun isNetworkAvailable(context: Context):Boolean{
         val connectivityManager:ConnectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val activeNetworkInfo: NetworkInfo? = connectivityManager.getActiveNetworkInfo()
         return activeNetworkInfo!= null && activeNetworkInfo.isConnected
+    }
+
+    // lay dia chi ip
+    fun getIPAddress(){
+        val wifiManager: WifiManager = applicationContext.getSystemService(WIFI_SERVICE) as WifiManager
+        val ipAddress: String = Formatter.formatIpAddress(wifiManager.connectionInfo.ipAddress)
+        Toast.makeText(applicationContext, ipAddress,Toast.LENGTH_SHORT).show()
+
     }
 
 

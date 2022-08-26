@@ -11,7 +11,8 @@ object RetrofitClient {
 
     // lay token trong bo nho
     private val TOKEN = SharedPreferencesOptimal.get("TOKEN", String::class.java)
-    private const val BASE_URL = "http://127.0.0.1:8081/"
+
+    private const val BASE_URL = "http://192.168.1.15:8081/"
 
     // test catching data
     private val READ_TIMEOUT = 5000

@@ -259,11 +259,9 @@
                         android:layout_weight="1"
                         android:layout_marginStart="10dp"
                         android:layout_toRightOf="@id/itemCategory2">
-
                         <androidx.cardview.widget.CardView
                             android:layout_width="60dp"
                             android:layout_height="60dp"
-
                             app:cardCornerRadius="5dp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -302,7 +300,6 @@
                         <androidx.cardview.widget.CardView
                             android:layout_width="60dp"
                             android:layout_height="60dp"
-
                             app:cardCornerRadius="5dp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -459,8 +456,6 @@
                         android:textSize="13dp"
                         app:layout_constraintEnd_toEndOf="@+id/iconCalculate"
                         app:layout_constraintTop_toBottomOf="@+id/date"
-
-
                         />
 
 
@@ -469,7 +464,6 @@
             </RelativeLayout>
 
             <RelativeLayout
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingStart="10dp"
@@ -488,109 +482,12 @@
                     android:id="@+id/list_doctor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
                     android:layout_below="@+id/doctor_title"
+                    android:layout_marginBottom="16dp"
                     android:orientation="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:itemCount="4"
                     tools:listitem="@layout/list_doctor" />
-
-<!--                <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="155dp"-->
-<!--                    android:layout_below="@+id/doctor_title"-->
-<!--                    android:background="@drawable/background_info">-->
-
-<!--                    <androidx.cardview.widget.CardView-->
-<!--                        android:id="@+id/item_image_fav"-->
-<!--                        android:layout_width="80dp"-->
-<!--                        android:layout_height="80dp"-->
-<!--                        android:layout_marginTop="5dp"-->
-<!--                        app:cardBackgroundColor="#F4F3F3"-->
-<!--                        app:cardCornerRadius="10dp"-->
-
-<!--                        app:layout_constraintEnd_toEndOf="parent"-->
-<!--                        app:layout_constraintStart_toStartOf="parent"-->
-<!--                        app:layout_constraintTop_toTopOf="parent">-->
-
-<!--                        <ImageView-->
-<!--                            android:id="@+id/image_doctor_fav"-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="match_parent"-->
-<!--                            android:layout_gravity="center"-->
-<!--                            android:importantForAccessibility="no"-->
-<!--                            android:scaleType="fitXY"-->
-<!--                            android:src="@drawable/dr1" />-->
-<!--                    </androidx.cardview.widget.CardView>-->
-
-<!--                    <TextView-->
-<!--                        android:id="@+id/nameDoctor_fav"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginTop="5dp"-->
-<!--                        android:fontFamily="@font/poppins_semibold"-->
-<!--                        android:text="Dr. Pham Minh Dung"-->
-<!--                        android:textColor="@color/black"-->
-<!--                        android:textSize="9dp"-->
-<!--                        app:layout_constraintEnd_toEndOf="parent"-->
-<!--                        app:layout_constraintStart_toStartOf="parent"-->
-<!--                        app:layout_constraintTop_toBottomOf="@+id/item_image_fav" />-->
-
-<!--                    <TextView-->
-<!--                        android:id="@+id/address_fav"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:fontFamily="@font/poppins"-->
-<!--                        android:text="Da Nang, Viet Nam"-->
-<!--                        android:textColor="@color/black"-->
-<!--                        android:textSize="9sp"-->
-<!--                        app:layout_constraintEnd_toEndOf="@+id/nameDoctor_fav"-->
-<!--                        app:layout_constraintStart_toStartOf="@+id/nameDoctor_fav"-->
-<!--                        app:layout_constraintTop_toBottomOf="@+id/nameDoctor_fav" />-->
-
-<!--                    <LinearLayout-->
-<!--                        android:layout_marginTop="5dp"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="16dp"-->
-<!--                        app:layout_constraintEnd_toEndOf="parent"-->
-<!--                        app:layout_constraintStart_toStartOf="parent"-->
-<!--                        app:layout_constraintTop_toBottomOf="@+id/address_fav">-->
-
-<!--                        <ImageView-->
-<!--                            android:id="@+id/imgStar1"-->
-<!--                            android:layout_width="20dp"-->
-<!--                            android:layout_height="match_parent"-->
-<!--                            android:src="@drawable/ic_star_check" />-->
-
-<!--                        <ImageView-->
-<!--                            android:id="@+id/imgStar2"-->
-<!--                            android:layout_width="20dp"-->
-<!--                            android:layout_height="match_parent"-->
-<!--                            android:src="@drawable/ic_star_check" />-->
-
-<!--                        <ImageView-->
-<!--                            android:id="@+id/imgStar3"-->
-<!--                            android:layout_width="20dp"-->
-<!--                            android:layout_height="match_parent"-->
-<!--                            android:src="@drawable/ic_star_check" />-->
-
-<!--                        <ImageView-->
-<!--                            android:id="@+id/imgStar4"-->
-<!--                            android:layout_width="20dp"-->
-<!--                            android:layout_height="match_parent"-->
-<!--                            android:src="@drawable/ic_star_check" />-->
-
-<!--                        <ImageView-->
-<!--                            android:id="@+id/imgStar5"-->
-<!--                            android:layout_width="20dp"-->
-<!--                            android:layout_height="match_parent"-->
-<!--                            android:src="@drawable/ic_star_uncheck" />-->
-<!--                    </LinearLayout>-->
-
-
-<!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-
 
             </RelativeLayout>
 <!--            <TextView-->

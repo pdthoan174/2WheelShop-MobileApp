@@ -1,4 +1,4 @@
-package com.example.encare.models
+package com.example.encare.oldCode
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName

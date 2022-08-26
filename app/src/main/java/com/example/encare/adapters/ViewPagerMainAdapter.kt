@@ -3,10 +3,7 @@ package com.example.encare.adapters
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.encare.fragments.AppointmentsFragment
-import com.example.encare.fragments.HomeFragment
-import com.example.encare.fragments.MessageFragment
-import com.example.encare.fragments.ProfileFragment
+import com.example.encare.fragments.*
 
 class ViewPagerMainAdapter(fragmentActivity: FragmentActivity):FragmentStateAdapter(fragmentActivity) {
     override fun getItemCount(): Int {
@@ -26,8 +23,7 @@ class ViewPagerMainAdapter(fragmentActivity: FragmentActivity):FragmentStateAdap
             }
             3 -> {
                 return ProfileFragment()
-            }
-            else -> {
+            }else -> {
                 return HomeFragment()
             }
         }

@@ -3,11 +3,10 @@ import com.google.gson.annotations.SerializedName
 
 class DataDoctor: Response() {
     @SerializedName("data")
-    var data: ArrayList<Data>? = null
-
+    var data: ArrayList<DataDoctorResponse>? = null
 }
 
-class Data {
+class DataDoctorResponse {
     @SerializedName("accountResponse")
     var accountResponse: AccountResponse? = null
 

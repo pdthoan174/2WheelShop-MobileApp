@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
         val viewPagerAdapter = ViewPagerMainAdapter(this)
         // add 4 fragments vao ViewPager
         view_pager_2.adapter = viewPagerAdapter

@@ -35,4 +35,7 @@ interface ApiServices {
         @Query("categoryId") categoryId:Int
     ):Call<DataDoctor>
 
+    @GET("api/user/listCategory")
+    fun getListCategory():Call<DataCategory>
+
 }

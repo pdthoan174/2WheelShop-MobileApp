@@ -7,19 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.encare.R
-import com.example.encare.models.Data
+
+import com.example.encare.models.DataDoctorResponse
 
 import kotlinx.android.synthetic.main.list_doctor.view.*
 
-
-class DoctorAdapter(private val listDoctor: ArrayList<Data>):RecyclerView.Adapter<DoctorAdapter.DoctorAdapterHolder>() {
+class DoctorAdapter(private val listDoctor: ArrayList<DataDoctorResponse>):RecyclerView.Adapter<DoctorAdapter.DoctorAdapterHolder>() {
     private lateinit var mContext: Context
-
-
     // mỗi lầ dổ dữ liệu lên thì nó sẽ sử dụng layout nào để binding data
     // binding vào viewHolder: list_doctor.xml
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DoctorAdapterHolder {
@@ -35,8 +32,17 @@ class DoctorAdapter(private val listDoctor: ArrayList<Data>):RecyclerView.Adapte
         //tao 8 doi tuong theo trong list_doctor.xml
 
         holder.nameDoctor.text = currentDoctor.accountResponse?.name
-        holder.addressDoctor.text = currentDoctor.hospitalResponse?.hospitalName
 
+        // gioi han ki tu hien thi addressDoctor
+        var addressDoctor = currentDoctor.hospitalResponse?.hospitalName
+        val limitCharacter = 20
+        if (addressDoctor != null) {
+            if (addressDoctor.length >= limitCharacter){
+                addressDoctor = addressDoctor.substring(0, limitCharacter)+"..."
+            }
+        }
+        holder.addressDoctor.text = addressDoctor
+        //end
 
         val avatar = currentDoctor.accountResponse?.avatar
         if (avatar == null){
