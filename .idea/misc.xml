@@ -50,13 +50,16 @@
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/fragment_appointment_current.xml" value="0.264" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/fragment_appointment_history.xml" value="0.4" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/fragment_category.xml" value="0.27734375" />
+        <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/fragment_doctor.xml" value="0.264" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/fragment_home.xml" value="0.264" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/fragment_item_list.xml" value="0.56015625" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/fragment_message.xml" value="0.41171875" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/fragment_profile.xml" value="0.41171875" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/list_appointment.xml" value="0.4" />
-        <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/list_category.xml" value="0.41171875" />
+        <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/list_category.xml" value="0.264" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/list_doctor.xml" value="0.4" />
+        <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/list_doctor_1.xml" value="0.265625" />
+        <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/list_doctor_2.xml" value="0.4" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/switch_item.xml" value="0.58125" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/menu/appointment_menu.xml" value="0.58125" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/menu/bottom_nav_menu.xml" value="0.4" />

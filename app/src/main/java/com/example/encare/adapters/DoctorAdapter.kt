@@ -1,26 +1,27 @@
 package com.example.encare.adapters
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.encare.R
 
 import com.example.encare.models.DataDoctorResponse
 
-import kotlinx.android.synthetic.main.list_doctor.view.*
+import kotlinx.android.synthetic.main.list_doctor_1.view.*
 
 class DoctorAdapter(private val listDoctor: ArrayList<DataDoctorResponse>):RecyclerView.Adapter<DoctorAdapter.DoctorAdapterHolder>() {
     private lateinit var mContext: Context
     // mỗi lầ dổ dữ liệu lên thì nó sẽ sử dụng layout nào để binding data
     // binding vào viewHolder: list_doctor.xml
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DoctorAdapterHolder {
-        val view:View = LayoutInflater.from(parent.context).inflate(R.layout.list_doctor, parent, false)
+        val view:View = LayoutInflater.from(parent.context).inflate(R.layout.list_doctor_1, parent, false)
         mContext = parent.context
         return DoctorAdapterHolder(view)
     }
@@ -30,7 +31,6 @@ class DoctorAdapter(private val listDoctor: ArrayList<DataDoctorResponse>):Recyc
         val currentDoctor = listDoctor[position]
         // set du lieu cho cac thanh phan
         //tao 8 doi tuong theo trong list_doctor.xml
-
         holder.nameDoctor.text = currentDoctor.accountResponse?.name
 
         // gioi han ki tu hien thi addressDoctor
@@ -43,6 +43,12 @@ class DoctorAdapter(private val listDoctor: ArrayList<DataDoctorResponse>):Recyc
         }
         holder.addressDoctor.text = addressDoctor
         //end
+
+        holder.itemDoctor.setOnClickListener{
+            val nameDoctor = currentDoctor.accountResponse?.name
+            Toast.makeText(mContext, "Click Doctor $nameDoctor",Toast.LENGTH_SHORT).show()
+
+        }
 
         val avatar = currentDoctor.accountResponse?.avatar
         if (avatar == null){
@@ -87,6 +93,8 @@ class DoctorAdapter(private val listDoctor: ArrayList<DataDoctorResponse>):Recyc
 
     class DoctorAdapterHolder(view: View) : RecyclerView.ViewHolder(view) {
         // tao 8 doi tuong theo trong list_doctor.xml
+        val itemDoctor:ConstraintLayout = view.itemDoctor
+
         var imgAvatar: ImageView = view.image_doctor_fav
         var nameDoctor: TextView = view.nameDoctor_fav
         var addressDoctor: TextView = view.address_fav

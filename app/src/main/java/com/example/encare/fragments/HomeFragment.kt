@@ -13,6 +13,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayoutStates.TAG
 import androidx.constraintlayout.widget.StateSet.TAG
+import androidx.core.view.forEach
+import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.encare.DataLocal.SharedPreferencesOptimal
@@ -20,6 +22,7 @@ import com.example.encare.R
 import com.example.encare.adapters.DoctorAdapter
 import com.example.encare.api.RetrofitClient
 import com.example.encare.models.*
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
@@ -31,6 +34,7 @@ import retrofit2.Retrofit
 class HomeFragment : Fragment() {
 
     private var token: String = ""
+    private var TAG = "TAG_FRAGMENT"
 
     private lateinit var mContext:Context
     override fun onAttach(context: Context) {
@@ -42,6 +46,7 @@ class HomeFragment : Fragment() {
         getToken()
         getProfile()
         listDoctor()
+
         super.onCreate(savedInstanceState)
     }
 
@@ -52,22 +57,24 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         view.itemCategory4.setOnClickListener {
-            val fragment = CategoryFragment()
-
-            val transaction = fragmentManager?.beginTransaction()
-            transaction?.setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.slide_in, R.anim.slide_out)
-            transaction?.add(R.id.FrameHome, fragment)
-            // them fragment vao stack
-            transaction?.addToBackStack(null)
-            transaction?.commit()
-
+            showCategoryFragment()
         }
+
         return view
+    }
+
+    private fun showCategoryFragment() {
+        val fragment = CategoryFragment()
+        val transaction = fragmentManager?.beginTransaction()
+        transaction?.setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.slide_in, R.anim.slide_out)
+        transaction?.replace(R.id.FrameLayoutHome, fragment, TAG)
+        // them fragment vao stack
+        transaction?.addToBackStack(null)
+        transaction?.commit()
     }
 
     private fun getToken(){
         token = SharedPreferencesOptimal.get("TOKEN", String::class.java)
-        Log.i("hihi",token)
     }
 
     private fun getProfile(){

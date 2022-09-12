@@ -1,5 +1,6 @@
 package com.example.encare.models
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 
 class DataCategory:Response(){
@@ -7,7 +8,7 @@ class DataCategory:Response(){
     val data: ArrayList<DataCategoryResponse>? = null
 }
 
-class DataCategoryResponse(){
+class DataCategoryResponse:Serializable{
     @SerializedName("categoryId")
     val categoryId: Int? = null
     @SerializedName("description")

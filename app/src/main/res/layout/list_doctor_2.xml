@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/item_image"
+        android:layout_width="70dp"
+        android:layout_height="75dp"
+        android:layout_margin="5dp"
+        app:cardBackgroundColor="#F4F3F3"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/image_doctor"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:importantForAccessibility="no"
+            android:scaleType="fitCenter"
+            android:src="@drawable/dr1" />
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/nameDoctor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Dr. Pham Minh Dung"
+        android:textColor="@color/black"
+        android:textSize="13dp"
+        app:layout_constraintStart_toEndOf="@+id/item_image"
+        app:layout_constraintTop_toTopOf="@+id/item_image" />
+
+    <LinearLayout
+        android:id="@+id/ratingDoctor"
+        android:layout_marginTop="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="16dp"
+        app:layout_constraintStart_toStartOf="@+id/nameDoctor"
+        app:layout_constraintTop_toBottomOf="@+id/nameDoctor">
+
+        <ImageView
+            android:id="@+id/imgStar1"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_star_uncheck" />
+
+        <ImageView
+            android:id="@+id/imgStar2"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_star_uncheck" />
+
+        <ImageView
+            android:id="@+id/imgStar3"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_star_uncheck" />
+
+        <ImageView
+            android:id="@+id/imgStar4"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_star_uncheck" />
+
+        <ImageView
+            android:id="@+id/imgStar5"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_star_uncheck" />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/nameHospital"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins"
+        android:text="Bệnh viên đa khoa Đà Nẵng"
+        android:textColor="@color/black"
+        android:layout_marginTop="2dp"
+        android:textSize="9sp"
+        app:layout_constraintStart_toStartOf="@+id/ratingDoctor"
+        app:layout_constraintTop_toBottomOf="@+id/ratingDoctor" />
+
+    <TextView
+        android:id="@+id/addressHospital"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="@font/poppins"
+        android:text="Da Nang, Viet Nam"
+        android:textColor="@color/black"
+        android:textSize="10sp"
+        app:layout_constraintTop_toBottomOf="@+id/nameHospital"
+        app:layout_constraintStart_toStartOf="@+id/nameHospital" />
+
+
+    <TextView
+        android:id="@+id/category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins"
+        android:text="Khoa Tim Mạch"
+        android:textColor="#060606"
+        android:textSize="11dp"
+        android:layout_marginEnd="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/nameDoctor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/nameDoctor" />
+
+    <Button
+        android:layout_width="65dp"
+        android:layout_height="35dp"
+        android:text="More"
+        android:textStyle="bold"
+        android:backgroundTint="@color/main_color"
+        android:textSize="10sp"
+        android:fontFamily="@font/poppins_semibold"
+
+        app:layout_constraintEnd_toEndOf="@+id/category"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

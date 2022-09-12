@@ -8,13 +8,14 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 // Sington Pattern
 object RetrofitClient {
-
     // lay token trong bo nho
     private val TOKEN = SharedPreferencesOptimal.get("TOKEN", String::class.java)
 
-    private const val BASE_URL = "http://192.168.1.15:8081/"
+    private const val BASE_URL = "http://192.168.1.17:8081/"
+//    private const val BASE_URL = "http://192.168.2.233:8081/"
 
     // test catching data
+
     private val READ_TIMEOUT = 5000
     private val REQUEST_TIMEOUT = 5000
     private val CONNECT_TIMEOUT = 5000

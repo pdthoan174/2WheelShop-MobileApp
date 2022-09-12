@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
                 android:fontFamily="@font/poppins_semibold"
-                android:text="Find a appointment"
+                android:text="Find a doctor"
                 android:textColor="@color/white"
                 android:textSize="15sp"
 
@@ -95,15 +95,13 @@
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:itemCount="4"
-            tools:listitem="@layout/list_category">
-
+            tools:listitem="@layout/list_doctor_2">
         </androidx.recyclerview.widget.RecyclerView>
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewpager_appointment"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
         </androidx.viewpager2.widget.ViewPager2>
     </LinearLayout>
 
