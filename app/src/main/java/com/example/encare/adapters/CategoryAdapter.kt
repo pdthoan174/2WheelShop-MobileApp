@@ -1,6 +1,7 @@
 package com.example.encare.adapters
 
 import android.content.Context
+import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -19,7 +20,7 @@ import kotlinx.android.synthetic.main.list_category.view.*
 class CategoryAdapter(
     private val listCategory:List<DataCategoryResponse>,
 
-):RecyclerView.Adapter<CategoryAdapter.CategoryAdapterHolders>() {
+):RecyclerView.Adapter<CategoryAdapter.CategoryAdapterHolders>(), ClickItemListener {
     private lateinit var mContext: Context
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryAdapterHolders {
         val view:View = LayoutInflater.from(parent.context).inflate(R.layout.list_category, parent, false)
@@ -31,13 +32,19 @@ class CategoryAdapter(
     override fun onBindViewHolder(holder: CategoryAdapterHolders, position: Int) {
         val currentCategory = listCategory[position]
         val idCategory = currentCategory.categoryId
-        holder.nameCategory.text = currentCategory.name
 
+        holder.nameCategory.text = currentCategory.name
         holder.nameCategory.setOnClickListener(object: View.OnClickListener{
             override fun onClick(v: View?) {
                 val activity = v?.context as AppCompatActivity
                 if (idCategory != null){
-                    val doctorFragment = DoctorFragment(idCategory)
+                    val doctorFragment = DoctorFragment()
+
+                    // add data vao bundle de gui sang fragment khac
+                    val bundle = Bundle()
+                    bundle.putInt("idCategory", idCategory)
+                    doctorFragment.arguments = bundle
+
                     activity.supportFragmentManager.beginTransaction()
                         .setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.slide_in, R.anim.slide_out)
                         .add(R.id.FrameLayoutHome, doctorFragment)
@@ -59,6 +66,13 @@ class CategoryAdapter(
 
     }
 
+    override fun onClickItemCategory(idCategory: Int) {
+        val bundle = Bundle()
+        bundle.putInt("id", idCategory)
+
+
+
+    }
 
 
 }

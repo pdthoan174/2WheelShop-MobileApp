@@ -1,20 +1,14 @@
 package com.example.encare.fragments
 
-import android.content.ContentValues.TAG
+
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
-import android.service.controls.ControlsProviderService.TAG
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.constraintlayout.widget.ConstraintLayoutStates.TAG
-import androidx.constraintlayout.widget.StateSet.TAG
-import androidx.core.view.forEach
-import androidx.fragment.app.commit
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.encare.DataLocal.SharedPreferencesOptimal
@@ -22,14 +16,12 @@ import com.example.encare.R
 import com.example.encare.adapters.DoctorAdapter
 import com.example.encare.api.RetrofitClient
 import com.example.encare.models.*
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
+
 
 class HomeFragment : Fragment() {
 
@@ -121,7 +113,7 @@ class HomeFragment : Fragment() {
                         val list:ArrayList<DataDoctorResponse>? = response.body()?.data
 
                         if (list != null){
-                            val adapter = DoctorAdapter(list)
+                            val adapter = DoctorAdapter(list,"vertical")
                             list_doctor.adapter = adapter
                             list_doctor.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false)
                         }

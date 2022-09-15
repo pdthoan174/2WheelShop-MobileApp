@@ -10,7 +10,7 @@ import retrofit2.http.*
 
 
 interface ApiServices {
-
+    // phuong thuc truy van cua Retrofit
     @POST("api/user/login")
     fun login(
         @Body userRequest: UserRequestLogin
