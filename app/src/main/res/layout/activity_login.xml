@@ -4,17 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.LoginActivity"
     android:focusable="true"
-    android:focusableInTouchMode="true">
+    android:focusableInTouchMode="true"
+    tools:context=".activity.LoginActivity">
 
     <ImageView
         android:layout_width="154dp"
         android:layout_height="150dp"
         android:src="@drawable/shape"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
         android:id="@+id/textView"
@@ -38,12 +38,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView">
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:contentDescription="TODO"
             android:scaleType="fitXY"
-            android:src="@drawable/image_login"
-            android:contentDescription="TODO" />
+            android:src="@drawable/image_login" />
     </androidx.cardview.widget.CardView>
 
     <EditText
@@ -51,42 +52,44 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
+        android:background="@drawable/input_bg"
         android:ems="10"
-        android:inputType="phone"
-        android:hint="Enter phone number"
-        android:gravity="center_horizontal"
-        android:textColorHint="#B3000000"
         android:fontFamily="@font/poppins"
-        android:textColor="#B3000000"
+        android:gravity="center_horizontal"
+        android:hint="Enter phone number"
+        android:inputType="phone"
         android:paddingTop="10dp"
         android:paddingBottom="5dp"
+        android:textColor="#B3000000"
 
 
-        android:background="@drawable/input_bg"
+        android:textColorHint="#B3000000"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
     <EditText
         android:id="@+id/editTextPassword"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:background="@drawable/input_bg"
         android:ems="10"
-        android:inputType="textPassword"
-        android:hint="Enter password"
+        android:fontFamily="@font/poppins"
         android:gravity="center_horizontal"
+        android:hint="Enter password"
+        android:inputType="textPassword"
+        android:paddingStart="-30dp"
         android:paddingTop="10dp"
         android:paddingBottom="5dp"
-        android:paddingStart="-30dp"
-        android:background="@drawable/input_bg"
-        android:textColorHint="#B3000000"
-        android:fontFamily="@font/poppins"
         android:textColor="#B3000000"
+        android:textColorHint="#B3000000"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
+
     <Switch
         android:id="@+id/rememberLogin"
         android:layout_width="wrap_content"
@@ -100,13 +103,13 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Remember Login"
         android:fontFamily="@font/poppins"
+        android:text="Remember Login"
         android:textColor="#B3000000"
         android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@+id/rememberLogin"
         app:layout_constraintEnd_toStartOf="@+id/rememberLogin"
         app:layout_constraintTop_toTopOf="@+id/rememberLogin"
-        app:layout_constraintBottom_toBottomOf="@+id/rememberLogin"
 
         />
 
@@ -144,9 +147,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:text="Login"
-        android:fontFamily="@font/poppins_semibold"
         android:backgroundTint="#50C2C9"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Login"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/sign_up"
         app:layout_constraintEnd_toEndOf="@+id/editTextPassword"
         app:layout_constraintStart_toStartOf="@+id/editTextPassword" />

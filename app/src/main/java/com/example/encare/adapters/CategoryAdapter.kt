@@ -26,7 +26,6 @@ class CategoryAdapter(
         val view:View = LayoutInflater.from(parent.context).inflate(R.layout.list_category, parent, false)
         mContext = parent.context
         return CategoryAdapterHolders(view)
-
     }
 
     override fun onBindViewHolder(holder: CategoryAdapterHolders, position: Int) {
@@ -69,9 +68,6 @@ class CategoryAdapter(
     override fun onClickItemCategory(idCategory: Int) {
         val bundle = Bundle()
         bundle.putInt("id", idCategory)
-
-
-
     }
 
 

@@ -25,6 +25,7 @@
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/drawable/ic_message.xml" value="0.38333333333333336" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/drawable/ic_outline_person_24.xml" value="0.38333333333333336" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/drawable/ic_profile.xml" value="0.38333333333333336" />
+        <entry key="..\:/Android PJ/EnCare/app/src/main/res/drawable/ic_search.xml" value="0.2534246575342466" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/drawable/ic_star_check.xml" value="0.4359375" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/drawable/input_bg.xml" value="0.4259541984732824" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/drawable/input_gb.xml" value="0.4359375" />
@@ -41,8 +42,8 @@
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout-land/activity_login.xml" value="0.4" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/activity_category.xml" value="0.264" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/activity_home.xml" value="0.4" />
-        <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/activity_login.xml" value="0.4" />
-        <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/activity_main.xml" value="0.4" />
+        <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/activity_login.xml" value="0.264" />
+        <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/activity_main.xml" value="0.176" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/activity_main2.xml" value="0.4" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/activity_register.xml" value="0.41171875" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/category_item.xml" value="0.8" />
@@ -50,7 +51,7 @@
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/fragment_appointment_current.xml" value="0.264" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/fragment_appointment_history.xml" value="0.4" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/fragment_category.xml" value="0.27734375" />
-        <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/fragment_doctor.xml" value="0.4" />
+        <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/fragment_doctor.xml" value="0.176" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/fragment_home.xml" value="0.264" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/fragment_item_list.xml" value="0.56015625" />
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/layout/fragment_message.xml" value="0.41171875" />
@@ -73,5 +74,8 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="SuppressKotlinCodeStyleNotification">
+    <option name="disableForAll" value="true" />
   </component>
 </project>

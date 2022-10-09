@@ -28,10 +28,10 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         btn_register.setOnClickListener {
-            val name:String = editTextName.getText().toString().trim()
-            val phoneNumber:String = editTextPhone.getText().toString().trim()
-            val password:String = editTextPassword.getText().toString().trim()
-            val confirmPassword:String = editConfirmPassword.getText().toString().trim()
+            val name:String = editTextName.text.toString().trim()
+            val phoneNumber:String = editTextPhone.text.toString().trim()
+            val password:String = editTextPassword.text.toString().trim()
+            val confirmPassword:String = editConfirmPassword.text.toString().trim()
 
             if (validate(name, phoneNumber, password, confirmPassword)){
                 sendRequestRegister(phoneNumber, password, name)

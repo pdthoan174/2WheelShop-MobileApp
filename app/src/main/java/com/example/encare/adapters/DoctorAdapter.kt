@@ -29,7 +29,7 @@ class DoctorAdapter(private val listDoctor: ArrayList<DataDoctorResponse>, priva
             val view:View = LayoutInflater.from(parent.context).inflate(R.layout.list_doctor_1, parent, false)
             return DoctorAdapterHolder(view)
         }else{
-            limitCharacter = 35
+            limitCharacter = 38
             val view:View = LayoutInflater.from(parent.context).inflate(R.layout.list_doctor_2, parent, false)
             return DoctorAdapterHolder(view)
         }

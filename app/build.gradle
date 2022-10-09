@@ -5,16 +5,15 @@ plugins {
 }
 
 android {
-    compileSdk 32
 
     defaultConfig {
         applicationId "com.example.encare"
         minSdk 22
-        targetSdk 32
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        targetSdk 33
     }
 
     buildTypes {
@@ -30,12 +29,20 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildToolsVersion '33.0.0'
+    compileSdk 33
+    compileSdkVersion 32
 }
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.8.0'
-    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'androidx.core:core-ktx:1.5.0'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.10"
+
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
+
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'

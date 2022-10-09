@@ -21,11 +21,12 @@ import kotlinx.android.synthetic.main.fragment_home.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 
 
 class HomeFragment : Fragment() {
 
-    private var token: String = ""
+    private  var token: String = ""
     private var TAG = "TAG_FRAGMENT"
 
     private lateinit var mContext:Context
@@ -110,7 +111,7 @@ class HomeFragment : Fragment() {
                     response: Response<DataDoctor>
                 ) {
                     if (response.isSuccessful){
-                        val list:ArrayList<DataDoctorResponse>? = response.body()?.data
+                        val list: ArrayList<DataDoctorResponse>? = response.body()?.data
 
                         if (list != null){
                             val adapter = DoctorAdapter(list,"vertical")

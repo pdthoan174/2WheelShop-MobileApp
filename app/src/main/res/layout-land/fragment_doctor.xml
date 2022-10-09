@@ -23,8 +23,7 @@
                 android:src="#6AE0D9"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:contentDescription="@string/todo" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/btnBack"
@@ -95,29 +94,12 @@
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:itemCount="4"
-            tools:listitem="@layout/list_doctor_2">
-
-        </androidx.recyclerview.widget.RecyclerView>
-
-        <TextView
-            android:id="@+id/messageUpdateData"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:visibility="invisible"
-            android:fontFamily="@font/poppins"
-            android:text="Đang cập nhật dữ liệu. . ."
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            />
+            tools:listitem="@layout/list_doctor_2"></androidx.recyclerview.widget.RecyclerView>
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewpager_appointment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        </androidx.viewpager2.widget.ViewPager2>
+            android:layout_height="match_parent"></androidx.viewpager2.widget.ViewPager2>
     </LinearLayout>
 
 

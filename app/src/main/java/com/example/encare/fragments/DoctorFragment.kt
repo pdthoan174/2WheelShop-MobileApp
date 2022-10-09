@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.VIEW_MODEL_STORE_OWNER_KEY
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.encare.R
 import com.example.encare.adapters.DoctorAdapter
@@ -19,6 +20,7 @@ import kotlinx.android.synthetic.main.fragment_doctor.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 
 class DoctorFragment() : Fragment() {
     private lateinit var mContext: Context
@@ -33,6 +35,7 @@ class DoctorFragment() : Fragment() {
         // nhan data tu bundle
         val bundle: Bundle? = arguments
         val idCategoryFromBundle =  bundle?.getInt("idCategory")
+
         if (idCategoryFromBundle != null){
             getListDoctorById(idCategoryFromBundle)
         }
@@ -42,23 +45,28 @@ class DoctorFragment() : Fragment() {
     }
 
 
-    private fun getListDoctorById(idCategory: Int){
-        Log.i("hihi", idCategory.toString())
+    private fun getListDoctorById(id:Int){
+        Log.i("hihi", id.toString())
 
-        RetrofitClient.instance.getListDoctor(18)
+        RetrofitClient.instance.getListDoctor(id)
             .enqueue(object: Callback<DataDoctor>{
                 override fun onResponse(call: Call<DataDoctor>, response: Response<DataDoctor>) {
                     if (response.isSuccessful){
                         val listDoctor: ArrayList<DataDoctorResponse>? = response.body()?.data
-                        if (listDoctor != null){
-                            val adapter = DoctorAdapter(listDoctor,"horizontal")
-                            listDoctorRV.adapter = adapter
-                            listDoctorRV.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false)
-                            Log.i("hihi", "list doctor null")
+                        if (listDoctor?.isEmpty() == true){
+                            messageUpdateData.visibility = View.VISIBLE
                         }else{
-                            Log.i("hihi", "list doctor not null")
+                            Log.i("hihi", "list is not empty")
+
+                            if (listDoctor != null){
+                                val adapter = DoctorAdapter(listDoctor,"horizontal")
+                                listDoctorRV.adapter = adapter
+                                listDoctorRV.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false)
+                            }
 
                         }
+
+
 
 //                        Toast.makeText(mContext, "Call List Doctor Successful",Toast.LENGTH_SHORT).show()
                     }else{
