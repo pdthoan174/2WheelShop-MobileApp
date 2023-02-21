@@ -4,9 +4,9 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 class UserRequestRegister{
-    @SerializedName("phone")
+    @SerializedName("email")
     @Expose
-    var phone: String? = null
+    var email: String? = null
 
     @SerializedName("password")
     @Expose
@@ -15,4 +15,11 @@ class UserRequestRegister{
     @SerializedName("name")
     @Expose
     var name: String? = null
+    @SerializedName("phone")
+    @Expose
+    var phone: String? = null
+    @SerializedName("status")
+    @Expose
+    var status: Boolean? = null
+
 }

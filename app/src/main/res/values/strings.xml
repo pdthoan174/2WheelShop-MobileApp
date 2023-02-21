@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">EnCare</string>
+    <string name="app_name">Shop2Wheel</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="todo">TODO</string>
+    <string name="mota_sp">Nhớt Liqui Scooter Formula 10W40 (0.8L) là dầu bán tổng hợp với công thức hoàn toàn mới dành riêng cho xe tay ga, đảm bảo bôi trơn liên tục, độ hao hụt dầu thấp, giảm tiếng ồn vận hành trong mọi điều kiện hoạt động. Nhớt Liqui Scooter Formula 10W40 phù hợp cho các dòng xe tay ga, được nhập khẩu 100% chính hãng Liqui Moly Đức.</string>
 </resources>

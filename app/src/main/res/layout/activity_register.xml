@@ -15,7 +15,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="12dp"
         android:fontFamily="@font/poppins"
-        android:text="Register for paitent"
+        android:text="Register for user"
         android:textColor="#BF131313"
         android:textSize="10dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,7 +36,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="90dp"
         android:fontFamily="@font/poppins_semibold"
-        android:text="Wellcome to EnCare"
+        android:text="Wellcome to Shop2Wheel "
         android:textColor="#BF131313"
         android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -65,7 +65,7 @@
         app:layout_constraintTop_toBottomOf="@+id/titleRegister" />
 
     <EditText
-        android:id="@+id/editTextPhone"
+        android:id="@+id/editTextEmail"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -73,8 +73,8 @@
         android:ems="10"
         android:fontFamily="@font/poppins"
         android:gravity="center_horizontal"
-        android:hint="Enter phone number"
-        android:inputType="phone"
+        android:hint="Enter your email"
+        android:inputType="textEmailAddress"
         android:paddingTop="10dp"
         android:paddingBottom="5dp"
         android:textColor="#B3000000"
@@ -83,6 +83,26 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextName" />
+
+    <EditText
+        android:id="@+id/editTextPhone"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/input_bg"
+        android:ems="10"
+        android:fontFamily="@font/poppins"
+        android:gravity="center_horizontal"
+        android:hint="Enter your phone number"
+        android:inputType="phone"
+        android:paddingTop="10dp"
+        android:paddingBottom="5dp"
+        android:textColor="#B3000000"
+        android:textColorHint="#B3000000"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEmail" />
 
     <EditText
         android:id="@+id/editTextPassword"

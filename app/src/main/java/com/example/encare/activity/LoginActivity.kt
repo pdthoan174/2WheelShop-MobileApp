@@ -3,7 +3,6 @@ package com.example.encare.activity
 import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
-import android.net.Network
 import android.net.NetworkInfo
 import android.net.wifi.WifiManager
 import androidx.appcompat.app.AppCompatActivity
@@ -13,11 +12,10 @@ import android.util.Log
 import android.view.Gravity
 
 import android.widget.Toast
-import androidx.core.content.getSystemService
 import com.example.encare.DataLocal.SharedPreferencesOptimal
 import com.example.encare.R
 import com.example.encare.api.RetrofitClient
-import com.example.encare.models.DataX
+
 import com.example.encare.models.LoginResponse
 import com.example.encare.models.UserRequestLogin
 import kotlinx.android.synthetic.main.activity_login.*
@@ -28,15 +26,12 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.util.regex.Pattern
 
-
 class LoginActivity : AppCompatActivity() {
-    // bien global dung de luu token khi dang nhap
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         getInfoUser()
-        Log.i("hihi", isNetworkAvailable(this).toString())
+        //Log.i("hihi", isNetworkAvailable(this).toString())
 
         if (!isNetworkAvailable(this)){
             val toast = Toast.makeText(this, "Please connect internet and try again",Toast.LENGTH_LONG)
@@ -44,7 +39,6 @@ class LoginActivity : AppCompatActivity() {
             toast.show()
         }
 //        getIPAddress()
-
         btn_login?.setOnClickListener {
             val phone = editTextPhone.text.toString().trim()
             val password:String = editTextPassword?.text.toString().trim()
@@ -62,9 +56,9 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    fun sendRequestLogin(phone: String, password: String, saveLogin: Boolean) {
+    fun sendRequestLogin(email: String, password: String, saveLogin: Boolean) {
         val request = UserRequestLogin()
-        request.phone = phone
+        request.email = email
         request.password = password
 
         RetrofitClient.instance.login(request)
@@ -75,19 +69,20 @@ class LoginActivity : AppCompatActivity() {
                 ) {
                     // description: trong RegisterResponse.kt
                     val postResult = response.body()
-
                     if (postResult != null){
 //                        Log.i("hihi", data.toString())
-                        val token = "Bearer "+postResult.data?.token.toString()
-                        saveToken(token)
+                        val token = "Bearer "+postResult.token.toString()
+                        val iduser = postResult.id
+
+                        saveToken(token, iduser.toString(), email)
                         if (saveLogin){
                             if (password != null) {
-                                storageInfoUser(phone,password)
+                                storageInfoUser(email,password)
                             }
                         }
+                        Toast.makeText(applicationContext, "Login Success",Toast.LENGTH_SHORT).show()
 
                         val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                        Toast.makeText(applicationContext, "Login Success",Toast.LENGTH_SHORT).show()
                         startActivity(intent)
                     }else{
                         Toast.makeText(applicationContext, "Login Fail",Toast.LENGTH_SHORT).show()
@@ -134,10 +129,12 @@ class LoginActivity : AppCompatActivity() {
         editTextPassword?.setText(password)
     }
 
-    fun saveToken(token: String){
+    fun saveToken(token: String,idUser: String,email: String){
 //        val preferences:SharedPreferences = this.getSharedPreferences("Info User", Context.MODE_PRIVATE)
 //        val editor = preferences.edit()
         SharedPreferencesOptimal.put("TOKEN", token)
+        SharedPreferencesOptimal.put("ID", idUser)
+        SharedPreferencesOptimal.put("EMAIL", email)
     }
     // kiểm tra ket noi internet
     fun isNetworkAvailable(context: Context):Boolean{

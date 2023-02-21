@@ -7,12 +7,12 @@
         android:title="Home"/>
     <item
         android:id="@+id/nav_appointment"
-        android:icon="@drawable/menu_appointment_icon"
-        android:title="Appointments"/>
+        android:icon="@drawable/ic_shopping_bag"
+        android:title="Shop"/>
     <item
-        android:id="@+id/nav_message"
-        android:icon="@drawable/menu_message_icon"
-        android:title="Message"/>
+        android:id="@+id/nav_cart"
+        android:icon="@drawable/ic_shopping_cart"
+        android:title="Giỏ Hàng"/>
     <item
         android:id="@+id/nav_profile"
         android:icon="@drawable/menu_profile_icon"

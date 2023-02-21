@@ -7,7 +7,7 @@ plugins {
 android {
 
     defaultConfig {
-        applicationId "com.example.encare"
+        applicationId "com.example.motoshop"
         minSdk 22
         versionCode 1
         versionName "1.0"

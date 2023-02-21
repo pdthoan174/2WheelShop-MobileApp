@@ -21,35 +21,25 @@ import retrofit2.Response
 class HomeActivity : AppCompatActivity() {
 
     var token: String = ""
+    private  var idUser: String = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_home)
         getToken()
-        getProfile()
+        getProfile(idUser.toInt())
 
     }
-
-//    fun getInfoIntent(){
-//        val intent = intent
-//        if (intent != null) {
-//            val infoUser: User = intent.getSerializableExtra("info") as User
-//            test.text = "Account ID: "+infoUser.accountId.toString()
-//            test.append("\nRole: "+infoUser.role)
-//            test.append("\nPass: "+infoUser.password)
-//            test.append("\nToken: "+infoUser.token)
-//            // Chuoi token de add vao Header
-//            token = "Bearer "+infoUser.token.toString()
-//        }
-//    }
 
     private fun getToken(){
         token = SharedPreferencesOptimal.get("TOKEN", String::class.java)
-//        Log.i("hihi",token)
+        idUser = SharedPreferencesOptimal.get("ID", String::class.java)
+        Log.i("hihi",idUser)
 
     }
 
-    private fun getProfile(){
-        RetrofitClient.instance.getProfile()
+    private fun getProfile(id: Int){
+        RetrofitClient.instance.getProfile(id)
             .enqueue(object: Callback<ProfileResponse> {
                 override fun onResponse(
                     call: Call<ProfileResponse>,
@@ -58,15 +48,15 @@ class HomeActivity : AppCompatActivity() {
                     // description: trong RegisterResponse.kt
                     val infoProfile = response.body()
 
-                    val accountResponse = infoProfile?.data?.accountResponse
+                    val accountResponse = infoProfile
                     if ( accountResponse!= null){
-                        var accountId = accountResponse.accountId
+                        var accountId = accountResponse.userId
                     }
 
                     if (response.isSuccessful){
                         Toast.makeText(applicationContext, "Get profile success", Toast.LENGTH_SHORT).show()
-                        textName.text = infoProfile?.data?.accountResponse?.name
-                        var avatar = infoProfile?.data?.accountResponse?.avatar
+                        textName.text = infoProfile?.name
+                        var avatar = infoProfile?.image
 
                         if (avatar == null){
                             avt1.setImageResource(R.drawable.avatar)

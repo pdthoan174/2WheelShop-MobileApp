@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
 open class Response {
     @SerializedName("status")
     @Expose
-    var status:Int? = null
+    open var statuss:Int? = null
 
     @SerializedName("description")
     @Expose

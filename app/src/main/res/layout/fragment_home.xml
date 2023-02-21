@@ -99,14 +99,14 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/poppins_semibold"
-                        android:text="Find a service or doctor"
+                        android:text="Find a service"
                         android:textColor="@color/white"
                         android:textSize="15sp"
 
                         app:layout_constraintStart_toStartOf="@+id/avt"
                         app:layout_constraintTop_toBottomOf="@+id/avt" />
 
-                    <EditText
+                    <androidx.appcompat.widget.SearchView
                         android:id="@+id/search"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
@@ -114,35 +114,21 @@
                         android:layout_marginTop="5dp"
                         android:layout_marginEnd="20dp"
                         android:background="@drawable/search_bg"
-                        android:drawablePadding="10dp"
                         android:fontFamily="@font/poppins_semibold"
-                        android:hint="Search..."
                         android:imeOptions="actionGo"
-                        android:paddingStart="15dp"
-                        android:paddingTop="6dp"
-                        android:paddingEnd="10dp"
                         android:textColor="#919090"
-                        android:textColorHint="@color/white"
-                        android:textSize="15sp"
+                        android:textSize="13sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/findInHome">
 
-                        app:layout_constraintTop_toBottomOf="@+id/findInHome" />
-
-                    <Button
-                        android:layout_width="35dp"
-                        android:layout_height="45dp"
-
-                        android:layout_marginEnd="5dp"
-                        android:backgroundTint="#B4E6F0F1"
-                        android:drawableBottom="@drawable/ic_search"
-                        app:layout_constraintBottom_toBottomOf="@+id/search"
-                        app:layout_constraintRight_toRightOf="@+id/search"
-                        app:layout_constraintTop_toTopOf="@+id/search" />
+                    </androidx.appcompat.widget.SearchView>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="150dp"
                     android:layout_gravity="center"
                     android:layout_margin="5dp"
                     app:cardCornerRadius="5dp">
@@ -151,7 +137,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/banner2" />
+                        android:src="@drawable/slider1" />
 
                 </androidx.cardview.widget.CardView>
 
@@ -167,7 +153,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_semibold"
-                        android:text="Department"
+                        android:text="Danh Mục"
                         android:textColor="#060606"
                         android:textSize="15sp" />
 
@@ -198,7 +184,7 @@
                                     android:layout_height="match_parent"
                                     android:background="#F4F3F3"
                                     android:padding="5dp"
-                                    android:src="@drawable/eye" />
+                                    android:src="@drawable/oil" />
 
                             </androidx.cardview.widget.CardView>
 
@@ -207,7 +193,7 @@
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/poppins_medium"
                                 android:gravity="center"
-                                android:text="Ophthalmology"
+                                android:text="Nhớt"
                                 android:textColor="@color/black"
                                 android:textSize="9.7sp"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -239,7 +225,7 @@
                                     android:layout_height="match_parent"
                                     android:background="#F4F3F3"
                                     android:padding="5dp"
-                                    android:src="@drawable/xuong1" />
+                                    android:src="@drawable/wheel" />
 
                             </androidx.cardview.widget.CardView>
 
@@ -248,7 +234,7 @@
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/poppins_medium"
                                 android:gravity="center"
-                                android:text="Musculoskeletal"
+                                android:text="Vỏ Xe Máy"
                                 android:textColor="@color/black"
                                 android:textSize="9.7sp"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -278,7 +264,7 @@
                                     android:layout_height="match_parent"
                                     android:background="#F4F3F3"
                                     android:padding="5dp"
-                                    android:src="@drawable/teech" />
+                                    android:src="@drawable/phukien" />
 
                             </androidx.cardview.widget.CardView>
 
@@ -287,7 +273,7 @@
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/poppins_medium"
                                 android:gravity="center"
-                                android:text="Odontology"
+                                android:text="Phụ Tùng"
                                 android:textColor="@color/black"
                                 android:textSize="10sp"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -343,115 +329,67 @@
                     android:paddingEnd="10dp">
 
                     <TextView
-                        android:id="@+id/appointment_title"
+                        android:id="@+id/sp_thinhhanh"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_semibold"
-                        android:text="Upcomming Appointments"
+                        android:text="Sản Phẩm Thịnh hành"
                         android:textColor="#060606"
                         android:textSize="15dp" />
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/item_appointments"
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/list_product_rate"
                         android:layout_width="match_parent"
-                        android:layout_height="80dp"
-                        android:layout_below="@+id/appointment_title"
-                        android:background="#F4F3F3"
-                        android:orientation="horizontal">
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/sp_thinhhanh"
+                        android:layout_marginBottom="16dp"
+                        android:orientation="horizontal"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:itemCount="4"
+                        tools:listitem="@layout/list_product_1" />
 
-                        <androidx.cardview.widget.CardView
-                            android:id="@+id/item_image"
-                            android:layout_width="60dp"
-                            android:layout_height="70dp"
-                            android:layout_margin="6dp"
-                            app:cardBackgroundColor="#F4F3F3"
-                            app:cardCornerRadius="10dp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
+                </RelativeLayout>
 
-                            <ImageView
-                                android:id="@+id/image_doctor1"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="center"
-                                android:importantForAccessibility="no"
-                                android:scaleType="fitCenter"
-                                android:src="@drawable/dr1" />
-                        </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    app:cardCornerRadius="5dp">
 
-                        <TextView
-                            android:id="@+id/nameDoctor1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="20dp"
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/banner_1" />
 
-                            android:fontFamily="@font/poppins_semibold"
-                            android:text="Dr. Pham Minh Dung"
-                            android:textColor="@color/black"
-                            android:textSize="13dp"
-                            app:layout_constraintStart_toEndOf="@+id/item_image"
-                            app:layout_constraintTop_toTopOf="@+id/item_image" />
+                </androidx.cardview.widget.CardView>
 
-                        <TextView
-                            android:id="@+id/nameDept"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins"
-                            android:text="Specialist in heart"
-                            android:textColor="@color/black"
-                            android:textSize="10sp"
-                            app:layout_constraintStart_toStartOf="@+id/nameDoctor1"
-                            app:layout_constraintTop_toBottomOf="@+id/nameDoctor1" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp">
 
-                        <TextView
-                            android:id="@+id/address"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="5dp"
-                            android:fontFamily="@font/poppins"
-                            android:text="Da Nang, Viet Nam"
-                            android:textColor="@color/black"
-                            android:textSize="12sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="@+id/nameDept" />
+                    <TextView
+                        android:id="@+id/best_seller_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Sản Phẩm Bán Chạy"
+                        android:textColor="#060606"
+                        android:textSize="15dp" />
 
-                        <ImageView
-
-                            android:id="@+id/iconCalculate"
-                            android:layout_width="wrap_content"
-                            android:layout_height="0dp"
-                            android:layout_marginEnd="10dp"
-                            android:src="@drawable/ic_calendar"
-                            app:layout_constraintBottom_toBottomOf="@+id/nameDoctor1"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/nameDoctor1" />
-
-                        <TextView
-                            android:id="@+id/date"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins"
-                            android:text="17/04/2022"
-                            android:textColor="#060606"
-                            android:textSize="11dp"
-                            app:layout_constraintEnd_toEndOf="@+id/iconCalculate"
-                            app:layout_constraintTop_toBottomOf="@+id/iconCalculate" />
-
-                        <TextView
-                            android:id="@+id/time"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:text="9:00am"
-                            android:textColor="#060606"
-                            android:textSize="13dp"
-                            app:layout_constraintEnd_toEndOf="@+id/iconCalculate"
-                            app:layout_constraintTop_toBottomOf="@+id/date" />
-
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/list_product_best_seller"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/best_seller_title"
+                        android:layout_marginBottom="16dp"
+                        android:orientation="horizontal"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:itemCount="4"
+                        tools:listitem="@layout/list_product_1" />
 
                 </RelativeLayout>
 
@@ -462,34 +400,34 @@
                     android:paddingEnd="10dp">
 
                     <TextView
-                        android:id="@+id/doctor_title"
+                        android:id="@+id/new_product"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_semibold"
-                        android:text="Favorite Doctors"
+                        android:text="Sản Phẩm Mới"
                         android:textColor="#060606"
                         android:textSize="15dp" />
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/list_doctor"
+                        android:id="@+id/list_new_product"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/doctor_title"
+                        android:layout_below="@+id/new_product"
                         android:layout_marginBottom="16dp"
                         android:orientation="horizontal"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                         tools:itemCount="4"
-                        tools:listitem="@layout/list_doctor_1" />
+                        tools:listitem="@layout/list_product_1" />
 
                 </RelativeLayout>
-                <!--            <TextView-->
-                <!--                android:id="@+id/test"-->
-                <!--                android:layout_width="wrap_content"-->
-                <!--                android:layout_height="match_parent"-->
-                <!--                android:text="Test"-->
-                <!--                android:textColor="@color/black"-->
-                <!--                android:layout_gravity="center_horizontal"-->
-                <!--                />-->
+<!--                            <TextView-->
+<!--                                android:id="@+id/test"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="match_parent"-->
+<!--                                android:text="Test"-->
+<!--                                android:textColor="@color/black"-->
+<!--                                android:layout_gravity="center_horizontal"-->
+<!--                                />-->
             </LinearLayout>
         </ScrollView>
     </FrameLayout>

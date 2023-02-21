@@ -16,10 +16,10 @@ class ViewPagerMainAdapter(fragmentActivity: FragmentActivity):FragmentStateAdap
                 return HomeFragment()
             }
             1 -> {
-                return AppointmentsFragment()
+                return ShopFragment()
             }
             2 -> {
-                return MessageFragment()
+                return CartFragment()
             }
             3 -> {
                 return ProfileFragment()

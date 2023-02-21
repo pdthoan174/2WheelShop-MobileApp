@@ -10,10 +10,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 object RetrofitClient {
     // lay token trong bo nho
     private val TOKEN = SharedPreferencesOptimal.get("TOKEN", String::class.java)
-
-//    private const val BASE_URL = "http://192.168.1.7:8081/"
-    private const val BASE_URL = "http://192.168.1.109:8081/"
-//    private const val BASE_URL = "http://10.0.2.2:8081/"
+//    private const val BASE_URL = "http://192.168.46.84:8080/"
+    private const val BASE_URL = "http://54.199.177.60:5000/"
+//    private const val BASE_URL = "http://10.0.2.2:8080/"
 
     // test catching data
     private val READ_TIMEOUT = 5000
@@ -31,6 +30,7 @@ object RetrofitClient {
             val original = chain.request()
             val requestBuilder = original.newBuilder()
                 .addHeader("Authorization", TOKEN)
+
             val request = requestBuilder.build()
             chain.proceed(request)
         }.build()

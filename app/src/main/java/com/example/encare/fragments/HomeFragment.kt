@@ -13,9 +13,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.encare.DataLocal.SharedPreferencesOptimal
 import com.example.encare.R
-import com.example.encare.adapters.DoctorAdapter
+import com.example.encare.adapters.ProductAdapter
 import com.example.encare.api.RetrofitClient
 import com.example.encare.models.*
+import com.example.encare.myInterface.ProductClickHandler
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import retrofit2.Call
@@ -24,9 +25,10 @@ import retrofit2.Response
 import java.util.*
 
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), ProductClickHandler {
 
     private  var token: String = ""
+    private  var idUser: String = ""
     private var TAG = "TAG_FRAGMENT"
 
     private lateinit var mContext:Context
@@ -37,8 +39,12 @@ class HomeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         getToken()
-        getProfile()
-        listDoctor()
+        getProfile(idUser.toInt())
+        listProductRate()
+        listProductBestSeller()
+        listNewProduct()
+        Toast.makeText(mContext, idUser, Toast.LENGTH_SHORT).show()
+        Log.i("hihi",idUser)
 
         super.onCreate(savedInstanceState)
     }
@@ -50,28 +56,28 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_home, container, false)
         view.itemCategory4.setOnClickListener {
-            showCategoryFragment()
+            //showCategoryFragment()
         }
-
         return view
     }
 
-    private fun showCategoryFragment() {
-        val fragment = CategoryFragment()
-        val transaction = fragmentManager?.beginTransaction()
-        transaction?.setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.slide_in, R.anim.slide_out)
-        transaction?.replace(R.id.FrameLayoutHome, fragment, TAG)
-        // them fragment vao stack
-        transaction?.addToBackStack(null)
-        transaction?.commit()
-    }
+//    private fun showCategoryFragment() {
+//        val fragment = CategoryFragment()
+//        val transaction = fragmentManager?.beginTransaction()
+//        transaction?.setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.slide_in, R.anim.slide_out)
+//        transaction?.replace(R.id.FrameLayoutHome, fragment, TAG)
+//        // them fragment vao stack
+//        transaction?.addToBackStack(null)
+//        transaction?.commit()
+//    }
 
     private fun getToken(){
         token = SharedPreferencesOptimal.get("TOKEN", String::class.java)
+        idUser = SharedPreferencesOptimal.get("ID", String::class.java)
     }
 
-    private fun getProfile(){
-        RetrofitClient.instance.getProfile()
+    private fun getProfile(id: Int){
+        RetrofitClient.instance.getProfile(id)
             .enqueue(object: Callback<ProfileResponse> {
                 override fun onResponse(
                     call: Call<ProfileResponse>,
@@ -79,11 +85,10 @@ class HomeFragment : Fragment() {
                 ) {
                     // description: trong RegisterResponse.kt
                     val infoProfile = response.body()
-
-                    val accountResponse = infoProfile?.data?.accountResponse
+                    //Log.i("hihi",infoProfile.toString())
                     if (response.isSuccessful){
-                        textName.text = accountResponse?.name
-                        val avatar = accountResponse?.avatar
+                        textName.text = infoProfile?.name
+                        val avatar = infoProfile?.image
                         if (avatar == null){
                             avt1.setImageResource(R.drawable.avatar)
                         }else{
@@ -103,32 +108,89 @@ class HomeFragment : Fragment() {
                 }
             })
     }
-    private fun listDoctor(){
-        RetrofitClient.instance.getListDoctor(18)
-            .enqueue(object: Callback<DataDoctor>{
+    // get list sản phẩm thịnhj hành
+    private fun listProductRate(){
+        RetrofitClient.instance.getlistProductRate()
+            .enqueue(object: Callback<DataProduct>{
                 override fun onResponse(
-                    call: Call<DataDoctor>,
-                    response: Response<DataDoctor>
+                    call: Call<DataProduct>,
+                    response: Response<DataProduct>
                 ) {
                     if (response.isSuccessful){
-                        val list: ArrayList<DataDoctorResponse>? = response.body()?.data
-
+                        val list: ArrayList<DataProductResponse>? = response.body()
+//                        Log.i("hihi",list.toString())
                         if (list != null){
-                            val adapter = DoctorAdapter(list,"vertical")
-                            list_doctor.adapter = adapter
-                            list_doctor.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false)
+                            val adapter = ProductAdapter(list,"vertical",9)
+                            list_product_rate.adapter = adapter
+                            list_product_rate.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false)
                         }
-                        Toast.makeText(mContext, "Call List Doctor Success",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(mContext, "Call List Product Rate Success",Toast.LENGTH_SHORT).show()
                     }else{
-                        Toast.makeText(mContext, "Call Doctor Fail",Toast.LENGTH_SHORT).show()
-
+                        Toast.makeText(mContext, "Call Product Rate Fail",Toast.LENGTH_SHORT).show()
                     }
                 }
 
-                override fun onFailure(call: Call<DataDoctor>, t: Throwable) {
-                    Toast.makeText(mContext, "Call List Doctor Fail",Toast.LENGTH_SHORT).show()
+                override fun onFailure(call: Call<DataProduct>, t: Throwable) {
+                    Toast.makeText(mContext, "Call API List Product Rate Fail",Toast.LENGTH_SHORT).show()
                 }
             })
+    }
+
+    // get list sản phẩm bán chạy
+    private fun listProductBestSeller(){
+        RetrofitClient.instance.getlistProductBestSeller()
+            .enqueue(object: Callback<DataProduct>{
+                override fun onResponse(
+                    call: Call<DataProduct>,
+                    response: Response<DataProduct>
+                ) {
+                    if (response.isSuccessful){
+                        val list: ArrayList<DataProductResponse>? = response.body()
+                        //Log.i("hihi",list.toString())
+                        if (list != null){
+                            val adapter = ProductAdapter(list,"vertical",10)
+                            list_product_best_seller.adapter = adapter
+                            list_product_best_seller.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false)
+                        }
+                        Toast.makeText(mContext, "Call List Best Seller Success",Toast.LENGTH_SHORT).show()
+                    }else{
+                        Toast.makeText(mContext, "Call List Best Seller Fail",Toast.LENGTH_SHORT).show()
+                    }
+                }
+                override fun onFailure(call: Call<DataProduct>, t: Throwable) {
+                    Toast.makeText(mContext, "Call List Best Seller Fail",Toast.LENGTH_SHORT).show()
+                }
+            })
+    }
+    // get list sản phẩm mới
+    private fun listNewProduct(){
+        RetrofitClient.instance.getlistNewProduct()
+            .enqueue(object: Callback<DataProduct>{
+                override fun onResponse(
+                    call: Call<DataProduct>,
+                    response: Response<DataProduct>
+                ) {
+                    if (response.isSuccessful){
+                        val list: ArrayList<DataProductResponse>? = response.body()
+                        //Log.i("hihi",list.toString())
+                        if (list != null){
+                            val adapter = ProductAdapter(list,"vertical",10)
+                            list_new_product.adapter = adapter
+                            list_new_product.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false)
+                        }
+                        Toast.makeText(mContext, "Call List New Product Success",Toast.LENGTH_SHORT).show()
+                    }else{
+                        Toast.makeText(mContext, "Call List New Product Fail",Toast.LENGTH_SHORT).show()
+                    }
+                }
+                override fun onFailure(call: Call<DataProduct>, t: Throwable) {
+                    Toast.makeText(mContext, "Call List New Product Fail",Toast.LENGTH_SHORT).show()
+                }
+            })
+    }
+
+    override fun clickedProductItem(idProduct: Int) {
+        TODO("Not yet implemented")
     }
 
 }

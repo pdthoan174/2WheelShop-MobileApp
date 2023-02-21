@@ -30,21 +30,24 @@ class RegisterActivity : AppCompatActivity() {
         btn_register.setOnClickListener {
             val name:String = editTextName.text.toString().trim()
             val phoneNumber:String = editTextPhone.text.toString().trim()
+            val email:String = editTextEmail.text.toString().trim()
             val password:String = editTextPassword.text.toString().trim()
             val confirmPassword:String = editConfirmPassword.text.toString().trim()
 
             if (validate(name, phoneNumber, password, confirmPassword)){
-                sendRequestRegister(phoneNumber, password, name)
+                sendRequestRegister(phoneNumber, password, name, email)
             }
 
         }
     }
 
-    fun sendRequestRegister(phone: String, password: String, name: String) {
+    fun sendRequestRegister(phone: String, password: String, name: String, email: String) {
         val request = UserRequestRegister()
         request.phone = phone
         request.password = password
         request.name = name
+        request.email = email
+        request.status = true
 
         RetrofitClient.instance.register(request)
             .enqueue(object: Callback<RegisterResponse>{
@@ -57,11 +60,8 @@ class RegisterActivity : AppCompatActivity() {
                     val postResult = response.body()
                     Log.i("test",postResult.toString())
                     if (postResult != null){
-                        errorMessage.text = postResult.status
-                        errorMessage.append("\n"+postResult.description)
-                        errorMessage.append("\n"+postResult.data?.name)
-                        errorMessage.append("\n"+postResult.data?.phone)
-                        errorMessage.append("\n"+postResult.data?.password)
+                        errorMessage.text = postResult.message
+
 
                     }
                 }
@@ -84,11 +84,12 @@ class RegisterActivity : AppCompatActivity() {
             return false
 
         }
-        else if (!passwordRegex.matcher(password).matches()){
-            errorMessage.setText("Password Minimum 8 characters, at least one letter and one number")
-            return false
-
-        }else if (!password.equals(confirmPassword)){
+//        else if (!passwordRegex.matcher(password).matches()){
+//            errorMessage.setText("Password Minimum 8 characters, at least one letter and one number")
+//            return false
+//
+//        }
+        else if (!password.equals(confirmPassword)){
             errorMessage.setText("Incorrect confirm password")
             return false
         }
