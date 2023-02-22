@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide
 import com.example.wheelshop.R
 import com.example.wheelshop.adapters.ProductAdapter
 import com.example.wheelshop.api.RetrofitClient
+import com.example.wheelshop.models.CartItem
 import com.example.wheelshop.models.DataProduct
 import com.example.wheelshop.models.DataProductResponse
 
@@ -34,16 +35,29 @@ class ProductDetailActivity : AppCompatActivity() {
     private lateinit var soldTV: TextView
     private lateinit var quantityTV: TextView
 
+    private lateinit var imageProduct: String
+    private lateinit var categoryProduct: String
+    private lateinit var nameProduct: String
+    private var priceProduct: Int = 0
+    private lateinit var priceFormat: String
+    private lateinit var descriptionProduct: String
+    private var sold:Int = 0
+    private var quantity:Int = 0
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_product_detail)
 
-        categoryTV = categoryProduct
-        nameProductTV = nameProduct
-        priceProductTV = price
+        categoryTV = category_product
+        nameProductTV = name_product
+        priceProductTV = price_product
         descriptionProductTV = description_product
-        soldTV = sold
-        quantityTV = quantity
+        soldTV = sold_product
+        quantityTV = quantity_product
+
+
 
         val idProductFrIntent = intent.extras?.getInt("idProduct")
         val idCategoryFrIntent = intent.extras?.getInt("idCategory")
@@ -64,6 +78,11 @@ class ProductDetailActivity : AppCompatActivity() {
             Toast.makeText(mContext,"Buy Now", Toast.LENGTH_SHORT).show()
         }
 
+        btn_add_cart.setOnClickListener {
+//            Toast.makeText(mContext, "Add Cart", Toast.LENGTH_SHORT).show()
+            addToCart(1,215000,66,17)
+        }
+
     }
 
     // finish activity with animation
@@ -82,15 +101,14 @@ class ProductDetailActivity : AppCompatActivity() {
                     if (response.isSuccessful){
                         val detailProduct: DataProductResponse? = response.body()
                         if (detailProduct!=null) {
-                            val imageProduct = detailProduct.image
-                            val categoryProduct = detailProduct.category.categoryName
-                            val nameProduct = detailProduct.name
-                            val priceProduct = detailProduct.price
-                            val priceFormat = NumberFormat.getCurrencyInstance(Locale("vie","vn")).format(priceProduct)
-
-                            val descriptionProduct = detailProduct.description
-                            val sold = detailProduct.sold
-                            val quantity = detailProduct.quantity
+                            imageProduct = detailProduct.image
+                            categoryProduct = detailProduct.category.categoryName
+                            nameProduct = detailProduct.name
+                            priceProduct = detailProduct.price
+                            priceFormat = NumberFormat.getCurrencyInstance(Locale("vie","vn")).format(priceProduct)
+                            descriptionProduct = detailProduct.description
+                            sold = detailProduct.sold
+                            quantity = detailProduct.quantity
 
                             Glide.with(this@ProductDetailActivity).load(imageProduct).into(image_product)
                             categoryTV.text = categoryProduct
@@ -130,8 +148,41 @@ class ProductDetailActivity : AppCompatActivity() {
                 }
                 override fun onFailure(call: Call<DataProduct>, t: Throwable) {
                     Toast.makeText(mContext, "Call api product suggest fail",Toast.LENGTH_SHORT).show()
+                }
+            })
+    }
+
+    //{"quantity":1,"price":198000,"product":{"productId":26},"cart":{"cartId":17}}
+    private fun addToCart(quantity: Int, price: Int, productId:Int, cartId: Int) {
+        val map = HashMap<String, Any>()
+
+        map["quantity"] = quantity
+        map["price"] = price
+
+        val productObj = HashMap<String,Any>()
+        productObj["productId"] = productId
+
+        val cartObj = HashMap<String,Any>()
+        cartObj["cartId"] = cartId
+
+        map["product"] = productObj
+        map["cart"] = cartObj
+
+        RetrofitClient.instance.addProductToCart(map)
+            .enqueue(object : Callback<CartItem>{
+                override fun onResponse(call: Call<CartItem>, response: Response<CartItem>) {
+                    if (response.isSuccessful){
+                        Toast.makeText(mContext, "Add To Cart Success!", Toast.LENGTH_SHORT).show()
+                    }else{
+                        Toast.makeText(mContext, "Add Cart Failed!", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<CartItem>, t: Throwable) {
+                    Toast.makeText(mContext, "Call Api Add Cart Failed!", Toast.LENGTH_SHORT).show()
 
                 }
+
             })
     }
 }

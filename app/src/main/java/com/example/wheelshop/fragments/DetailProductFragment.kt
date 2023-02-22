@@ -44,12 +44,12 @@ class DetailProductFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_product_detail, container, false)
-        categoryTV = view.categoryProduct
-        nameProductTV = view.nameProduct
-        priceProductTV = view.price
+        categoryTV = view.category_product
+        nameProductTV = view.name_product
+        priceProductTV = view.price_product
         descriptionProductTV = view.description_product
-        soldTV = view.sold
-        quantityTV = view.quantity
+        soldTV = view.sold_product
+        quantityTV = view.quantity_product
 //        category.text = "tesst nha hihi "
         val bundle: Bundle? = arguments
         val idProductFrBundle = bundle?.getInt("idProduct",0)

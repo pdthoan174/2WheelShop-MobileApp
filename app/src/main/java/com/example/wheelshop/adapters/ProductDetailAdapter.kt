@@ -66,12 +66,12 @@ class ProductDetailAdapter(
     inner class ProductDetailAdapterHolder(view: View) : RecyclerView.ViewHolder(view) {
         // tao 8 doi tuong theo trong list_doctor.xml
         var imgProduct: ImageView = view.image_product
-        var nameProduct: TextView = view.nameProduct
-        var price: TextView = view.price
-        var category: TextView = view.categoryProduct
+        var nameProduct: TextView = view.name_product
+        var price: TextView = view.price_product
+        var category: TextView = view.category_product
         val descriptionProduct: TextView = view.description_product
-        val sold:TextView = view.sold
-        val quantity:TextView = view.quantity
+        val sold:TextView = view.sold_product
+        val quantity:TextView = view.quantity_product
     }
 
 }

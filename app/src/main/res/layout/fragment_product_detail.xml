@@ -82,7 +82,7 @@
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/categoryProduct"
+                        android:id="@+id/category_product"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
@@ -94,7 +94,7 @@
                     </TextView>
 
                     <TextView
-                        android:id="@+id/sold"
+                        android:id="@+id/sold_product"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
@@ -107,7 +107,7 @@
                 </RelativeLayout>
 
                 <TextView
-                    android:id="@+id/nameProduct"
+                    android:id="@+id/name_product"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -122,7 +122,7 @@
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/price"
+                        android:id="@+id/price_product"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
@@ -281,7 +281,7 @@
                     android:textSize="15sp" />
 
                 <TextView
-                    android:id="@+id/quantity"
+                    android:id="@+id/quantity_product"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"

@@ -1,6 +1,7 @@
 package com.example.wheelshop.adapters
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,7 +39,7 @@ class CartAdapter(
         mContext = parent.context
         limitCharacter = 80
         val view:View = LayoutInflater.from(parent.context).inflate(R.layout.cart_product, parent, false)
-        totalCart()
+        updateTotalCart()
         return CartAdapterHolder(view)
     }
 
@@ -101,7 +102,7 @@ class CartAdapter(
                 num = quantity
 
                 updateCart(cartDetailId, quantity, total, productId, cartId)
-                totalCart()
+                updateTotalCart()
 
             }else{
                 Toast.makeText(mContext, "Vượt quá số sản phẩm trong kho", Toast.LENGTH_SHORT).show()
@@ -124,7 +125,7 @@ class CartAdapter(
                     num = quantity
 
                     updateCart(cartDetailId, quantity, total, productId, cartId)
-                    totalCart()
+                    updateTotalCart()
                 }
             }
 
@@ -152,16 +153,13 @@ class CartAdapter(
         return NumberFormat.getCurrencyInstance(Locale("vie","vn")).format(price)
     }
 
-    fun totalCart():Int{
+    fun updateTotalCart(){
         var total = 0
         for (item in listProduct){
             total += item.product.price * item.quantity
         }
 
         totalText.text = formatCurrency(total)
-
-
-        return total
     }
 
     private fun updateCart(cartDetailId: Int, quantity:Int, price:Int, productId:Int, cartId: Int){

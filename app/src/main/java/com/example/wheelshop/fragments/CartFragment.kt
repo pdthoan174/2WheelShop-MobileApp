@@ -96,11 +96,9 @@ class CartFragment : Fragment() {
             })
     }
 
-    fun setTotalCart(adapterFun: CartAdapter){
-        val total = adapterFun.formatCurrency(adapterFun.totalCart())
-
-
-        totalText.text = total
-    }
-
+    // call function on adapter
+//    fun setTotalCart(adapterFun: CartAdapter){
+//        val total = adapterFun.formatCurrency(adapterFun.updateTotalCart())
+//        totalText.text = total
+//    }
 }

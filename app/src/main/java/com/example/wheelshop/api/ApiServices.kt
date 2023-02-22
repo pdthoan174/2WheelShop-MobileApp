@@ -68,13 +68,13 @@ interface ApiServices {
         @Path("id") id: Int
     ):Call<CartRespone>
 
+    // add product to cart
     @POST("/api/cartDetail")
-    fun addaCart(
-        @Body addCart: AddCartRequest
-    ):Call<CartRespone>
+    fun addProductToCart(
+        @Body addCart: HashMap<String, Any>
+    ):Call<CartItem>
 
     // update item in cart
-
     @PUT("/api/cartDetail/")
     fun updateItemInCart(
         @Body cartDetail: HashMap<String,Any>
