@@ -5,7 +5,11 @@ import android.os.Bundle
 
 import androidx.viewpager2.widget.ViewPager2
 import com.example.wheelshop.*
+import com.example.wheelshop.DataLocal.SharedPreferencesOptimal
 import com.example.wheelshop.adapters.ViewPagerMainAdapter
+import com.example.wheelshop.fragments.CartFragment
+import com.example.wheelshop.models.DataProduct
+import com.example.wheelshop.myInterface.AddToCart
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -56,6 +60,17 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+
     }
+
+//    override fun addProductToCart() {
+//        val tag = "android.switcher:"+R.id.view_pager_2.toString()+":"+1
+//
+//        val fragment = supportFragmentManager.findFragmentByTag(tag) as CartFragment
+//        val cartId = SharedPreferencesOptimal.get("CART",String::class.java)
+//
+//        fragment.listProductInCart(cartId.toInt())
+//
+//    }
 
 }

@@ -9,12 +9,14 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
+import com.example.wheelshop.DataLocal.SharedPreferencesOptimal
 import com.example.wheelshop.R
 import com.example.wheelshop.adapters.ProductAdapter
 import com.example.wheelshop.api.RetrofitClient
 import com.example.wheelshop.models.CartItem
 import com.example.wheelshop.models.DataProduct
 import com.example.wheelshop.models.DataProductResponse
+import com.example.wheelshop.myInterface.AddToCart
 
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.fragment_product_detail.*
@@ -36,6 +38,8 @@ class ProductDetailActivity : AppCompatActivity() {
     private lateinit var quantityTV: TextView
 
     private lateinit var imageProduct: String
+    private var productId: Int = 0
+    private var cartId: String = SharedPreferencesOptimal.get("CART", String::class.java)
     private lateinit var categoryProduct: String
     private lateinit var nameProduct: String
     private var priceProduct: Int = 0
@@ -43,8 +47,6 @@ class ProductDetailActivity : AppCompatActivity() {
     private lateinit var descriptionProduct: String
     private var sold:Int = 0
     private var quantity:Int = 0
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,8 +58,6 @@ class ProductDetailActivity : AppCompatActivity() {
         descriptionProductTV = description_product
         soldTV = sold_product
         quantityTV = quantity_product
-
-
 
         val idProductFrIntent = intent.extras?.getInt("idProduct")
         val idCategoryFrIntent = intent.extras?.getInt("idCategory")
@@ -80,7 +80,8 @@ class ProductDetailActivity : AppCompatActivity() {
 
         btn_add_cart.setOnClickListener {
 //            Toast.makeText(mContext, "Add Cart", Toast.LENGTH_SHORT).show()
-            addToCart(1,215000,66,17)
+            addToCart(1,priceProduct,productId,cartId.toInt())
+
         }
 
     }
@@ -102,6 +103,8 @@ class ProductDetailActivity : AppCompatActivity() {
                         val detailProduct: DataProductResponse? = response.body()
                         if (detailProduct!=null) {
                             imageProduct = detailProduct.image
+                            productId = detailProduct.productId
+
                             categoryProduct = detailProduct.category.categoryName
                             nameProduct = detailProduct.name
                             priceProduct = detailProduct.price
@@ -185,4 +188,6 @@ class ProductDetailActivity : AppCompatActivity() {
 
             })
     }
+
+
 }

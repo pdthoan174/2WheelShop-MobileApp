@@ -10,6 +10,7 @@ class ViewPagerMainAdapter(fragmentActivity: FragmentActivity):FragmentStateAdap
         return 4
     }
 
+
     override fun createFragment(position: Int): Fragment {
         when (position){
             0 -> {

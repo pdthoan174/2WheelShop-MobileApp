@@ -2,6 +2,7 @@ package com.example.wheelshop.fragments
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import com.example.wheelshop.R
 import com.example.wheelshop.adapters.CartAdapter
 import com.example.wheelshop.api.RetrofitClient
 import com.example.wheelshop.models.*
+import com.example.wheelshop.myInterface.AddToCart
 import kotlinx.android.synthetic.main.fragment_cart.*
 
 import retrofit2.Call
@@ -65,7 +67,7 @@ class CartFragment : Fragment() {
             })
     }
 
-    private fun listProductInCart(cart:Int) {
+    public fun listProductInCart(cart:Int) {
         RetrofitClient.instance.getListProductCart(cart)
             .enqueue(object: Callback<CartRespone>{
                 override fun onResponse(
@@ -79,21 +81,27 @@ class CartFragment : Fragment() {
                         if (list != null){
                             val adapter = CartAdapter(list,totalText)
                             listCartProduct.adapter = adapter
-                            listCartProduct.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false)
-
+                            listCartProduct.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, true)
+                            listCartProduct.scrollToPosition(list.size - 1)
 //                            setTotalCart(adapter)
                         }
-                        Toast.makeText(mContext, "Call List Doctor Success",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(mContext, "Call List Product cart Success",Toast.LENGTH_SHORT).show()
                     }else{
-                        Toast.makeText(mContext, "Call Doctor Fail",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(mContext, "Call Product cart Fail",Toast.LENGTH_SHORT).show()
 
                     }
                 }
 
                 override fun onFailure(call: Call<CartRespone>, t: Throwable) {
-                    Toast.makeText(mContext, "Call List Doctor Fail",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(mContext, "Call List Product cart Fail",Toast.LENGTH_SHORT).show()
                 }
             })
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.i("cartfm", "onResume")
+        listProductInCart(idCart)
     }
 
     // call function on adapter
