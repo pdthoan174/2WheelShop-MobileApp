@@ -69,7 +69,9 @@
         <entry key="..\:/Android PJ/EnCare/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.15989583333333332" />
         <entry key="..\:/Android PJ/MotoShop/app/src/main/res/drawable/background_info.xml" value="0.12222222222222222" />
         <entry key="..\:/Android PJ/MotoShop/app/src/main/res/drawable/bg_category.xml" value="0.12222222222222222" />
+        <entry key="..\:/Android PJ/MotoShop/app/src/main/res/drawable/bg_dialog.xml" value="0.1824074074074074" />
         <entry key="..\:/Android PJ/MotoShop/app/src/main/res/drawable/bg_product_cart.xml" value="0.175" />
+        <entry key="..\:/Android PJ/MotoShop/app/src/main/res/drawable/bg_text.xml" value="0.2351851851851852" />
         <entry key="..\:/Android PJ/MotoShop/app/src/main/res/drawable/bg_time.xml" value="0.12222222222222222" />
         <entry key="..\:/Android PJ/MotoShop/app/src/main/res/drawable/button_border.xml" value="0.25277777777777777" />
         <entry key="..\:/Android PJ/MotoShop/app/src/main/res/drawable/button_quantity.xml" value="0.18518518518518517" />
@@ -94,20 +96,30 @@
         <entry key="..\:/Android PJ/MotoShop/app/src/main/res/drawable/nav_item_color_selected.xml" value="0.17407407407407408" />
         <entry key="..\:/Android PJ/MotoShop/app/src/main/res/drawable/search_bg.xml" value="0.18333333333333332" />
         <entry key="..\:/Android PJ/MotoShop/app/src/main/res/drawable/search_bg_1.xml" value="0.18333333333333332" />
+        <entry key="..\:/Android PJ/MotoShop/app/src/main/res/layout/activity_checkout.xml" value="0.24259259259259258" />
+        <entry key="..\:/Android PJ/MotoShop/app/src/main/res/layout/activity_detail_order.xml" value="0.24259259259259258" />
         <entry key="..\:/Android PJ/MotoShop/app/src/main/res/layout/activity_login.xml" value="0.176" />
         <entry key="..\:/Android PJ/MotoShop/app/src/main/res/layout/activity_main.xml" value="0.17407407407407408" />
         <entry key="..\:/Android PJ/MotoShop/app/src/main/res/layout/activity_main2.xml" value="0.14305555555555555" />
-        <entry key="..\:/Android PJ/MotoShop/app/src/main/res/layout/activity_register.xml" value="0.2" />
+        <entry key="..\:/Android PJ/MotoShop/app/src/main/res/layout/activity_register.xml" value="0.264" />
         <entry key="..\:/Android PJ/MotoShop/app/src/main/res/layout/cart_product.xml" value="0.264" />
+        <entry key="..\:/Android PJ/MotoShop/app/src/main/res/layout/checkout_dialog.xml" value="0.24259259259259258" />
+        <entry key="..\:/Android PJ/MotoShop/app/src/main/res/layout/detail_order_dialog.xml" value="0.24259259259259258" />
         <entry key="..\:/Android PJ/MotoShop/app/src/main/res/layout/fragment_apointments.xml" value="0.17407407407407408" />
         <entry key="..\:/Android PJ/MotoShop/app/src/main/res/layout/fragment_appointment_current.xml" value="0.17407407407407408" />
-        <entry key="..\:/Android PJ/MotoShop/app/src/main/res/layout/fragment_cart.xml" value="0.2" />
+        <entry key="..\:/Android PJ/MotoShop/app/src/main/res/layout/fragment_cart.xml" value="0.264" />
         <entry key="..\:/Android PJ/MotoShop/app/src/main/res/layout/fragment_category.xml" value="0.17407407407407408" />
         <entry key="..\:/Android PJ/MotoShop/app/src/main/res/layout/fragment_doctor.xml" value="0.23981481481481481" />
         <entry key="..\:/Android PJ/MotoShop/app/src/main/res/layout/fragment_home.xml" value="0.2" />
+        <entry key="..\:/Android PJ/MotoShop/app/src/main/res/layout/fragment_list_category.xml" value="0.21898148148148147" />
+        <entry key="..\:/Android PJ/MotoShop/app/src/main/res/layout/fragment_list_product.xml" value="0.21898148148148147" />
         <entry key="..\:/Android PJ/MotoShop/app/src/main/res/layout/fragment_message.xml" value="0.2" />
         <entry key="..\:/Android PJ/MotoShop/app/src/main/res/layout/fragment_product_detail.xml" value="0.2" />
+        <entry key="..\:/Android PJ/MotoShop/app/src/main/res/layout/fragment_profile.xml" value="0.2" />
         <entry key="..\:/Android PJ/MotoShop/app/src/main/res/layout/fragment_shop.xml" value="0.2" />
+        <entry key="..\:/Android PJ/MotoShop/app/src/main/res/layout/item_category.xml" value="0.264" />
+        <entry key="..\:/Android PJ/MotoShop/app/src/main/res/layout/item_detail_order.xml" value="0.24259259259259258" />
+        <entry key="..\:/Android PJ/MotoShop/app/src/main/res/layout/item_order.xml" value="0.24259259259259258" />
         <entry key="..\:/Android PJ/MotoShop/app/src/main/res/layout/list_appointment.xml" value="0.1763888888888889" />
         <entry key="..\:/Android PJ/MotoShop/app/src/main/res/layout/list_category.xml" value="0.12453703703703704" />
         <entry key="..\:/Android PJ/MotoShop/app/src/main/res/layout/list_doctor_1.xml" value="0.4" />

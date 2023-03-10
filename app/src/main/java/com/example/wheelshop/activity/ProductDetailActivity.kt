@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.TextView
 
 import android.widget.Toast
@@ -121,6 +122,15 @@ class ProductDetailActivity : AppCompatActivity() {
                             soldTV.text = "Đã bán: $sold"
                             quantityTV.text = "Số lượng sản phẩm: $quantity"
 
+                            // hien thi views
+                            image_product.visibility = View.VISIBLE
+                            categoryTV.visibility = View.VISIBLE
+                            nameProductTV.visibility = View.VISIBLE
+                            priceProductTV.visibility = View.VISIBLE
+                            descriptionProductTV.visibility = View.VISIBLE
+                            soldTV.visibility = View.VISIBLE
+                            quantityTV.visibility = View.VISIBLE
+
                         }
                         Log.i("hihi", detailProduct.toString())
                     }
@@ -143,14 +153,18 @@ class ProductDetailActivity : AppCompatActivity() {
 //                            list_product_suggest.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false)
                             list_product_suggest.layoutManager = GridLayoutManager(mContext, 3)
 
-                            Toast.makeText(mContext, "Call list product suggest success",Toast.LENGTH_SHORT).show()
+//                            Toast.makeText(mContext, "Call list product suggest success",Toast.LENGTH_SHORT).show()
+                            Log.i("toast","Call list product suggest success")
                         }else{
-                            Toast.makeText(mContext, "Call list product suggest fail",Toast.LENGTH_SHORT).show()
+//                            Toast.makeText(mContext, "Call list product suggest fail",Toast.LENGTH_SHORT).show()
+                            Log.i("toast","Call list product suggest fail")
                         }
                     }
                 }
                 override fun onFailure(call: Call<DataProduct>, t: Throwable) {
-                    Toast.makeText(mContext, "Call api product suggest fail",Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(mContext, "",Toast.LENGTH_SHORT).show()
+                    Log.i("toast","Call api product suggest fail")
+
                 }
             })
     }

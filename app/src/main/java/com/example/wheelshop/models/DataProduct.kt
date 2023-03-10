@@ -29,6 +29,8 @@ data class DataProductResponse (
     val status: Boolean
 )
 
+class ListCategory : ArrayList<Category>()
+
 data class Category(
     val categoryId: Int,
     val categoryName: String

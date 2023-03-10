@@ -59,12 +59,12 @@ class HomeActivity : AppCompatActivity() {
                         var avatar = infoProfile?.image
 
                         if (avatar == null){
-                            avt1.setImageResource(R.drawable.avatar)
+                            avt1.setImageResource(R.drawable.avatars)
                         }else{
                             // load using Glide
                             Glide.with(applicationContext)
                                 .load(avatar)
-                                .error(R.drawable.avatar)
+                                .error(R.drawable.avatars)
 //                            .override(20,20)
 //                            .placeholder(R.drawable.load)
                                 .into(avt1)

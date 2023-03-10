@@ -23,7 +23,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="90dp"
         android:fontFamily="@font/poppins_semibold"
-        android:text="Wellcome to Shop2Wheel"
+        android:text="."
         android:textColor="#BF131313"
         android:textSize="23dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,7 +50,7 @@
 
     <EditText
         android:id="@+id/editTextPhone"
-        android:layout_width="250dp"
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:background="@drawable/input_bg"
@@ -72,7 +72,7 @@
 
     <EditText
         android:id="@+id/editTextPassword"
-        android:layout_width="250dp"
+        android:layout_width="290dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/input_bg"

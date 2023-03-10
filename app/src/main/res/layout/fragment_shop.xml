@@ -103,22 +103,50 @@
 
             </androidx.appcompat.widget.SearchView>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/listAllProduct"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="0dp"
-                android:layout_marginBottom="50dp"
-                android:orientation="vertical"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                tools:itemCount="4"
-                app:spanCount="3"
-                android:nestedScrollingEnabled="false"
-                tools:listitem="@layout/list_product_1">
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--                android:id="@+id/listCategoryRV"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="15dp"-->
+<!--                android:layout_marginTop="5dp"-->
+<!--                android:orientation="horizontal"-->
+<!--                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
+<!--                tools:itemCount="4"-->
+<!--                tools:listitem="@layout/item_category">-->
 
-            </androidx.recyclerview.widget.RecyclerView>
+<!--            </androidx.recyclerview.widget.RecyclerView>-->
+
+            <FrameLayout
+                android:id="@+id/list_category_frame"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <include layout="@layout/fragment_list_category"/>
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/list_product_frame"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_height="wrap_content">
+                <include layout="@layout/fragment_list_product"/>
+            </FrameLayout>
+
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--                android:id="@+id/listAllProduct"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="15dp"-->
+<!--                android:layout_marginEnd="0dp"-->
+<!--                android:layout_marginBottom="50dp"-->
+<!--                android:orientation="vertical"-->
+<!--                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"-->
+<!--                tools:itemCount="4"-->
+<!--                app:spanCount="3"-->
+<!--                android:nestedScrollingEnabled="false"-->
+<!--                tools:listitem="@layout/list_product_1">-->
+
+<!--            </androidx.recyclerview.widget.RecyclerView>-->
 
 
         </LinearLayout>

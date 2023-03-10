@@ -1,5 +1,6 @@
 package com.example.wheelshop.adapters
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
@@ -30,7 +31,6 @@ class CartAdapter(
 
 ):RecyclerView.Adapter<CartAdapter.CartAdapterHolder>() {
     private lateinit var mContext: Context
-    // gioi han ki tu hien thi nameHospital va addressDoctor
     private var limitCharacter = 20
 
     // mỗi lầ dổ dữ liệu lên thì nó sẽ sử dụng layout nào để binding data
@@ -44,6 +44,7 @@ class CartAdapter(
     }
 
     // binding data tu doi tuong len viewHolder
+    @SuppressLint("NotifyDataSetChanged")
     override fun onBindViewHolder(holder: CartAdapterHolder, position: Int) {
         val currentProduct = listProduct[position]
         // set du lieu cho cac thanh phan
@@ -76,16 +77,12 @@ class CartAdapter(
         holder.price.text = priceFormat
         holder.nameProduct.text = nameProduct
         holder.numProduct.text = num.toString()
-        //end
-
-//        totalCartTV = holder.totalCartTV
-
         holder.itemProduct.setOnClickListener{
             val cartDetailId = currentProduct.cartDetailId
-            Toast.makeText(mContext, "Click Doctor $cartDetailId",Toast.LENGTH_SHORT).show()
+            Toast.makeText(mContext, "Click Product $cartDetailId",Toast.LENGTH_SHORT).show()
         }
         if (image == null){
-            holder.imgProduct.setImageResource(R.drawable.avatar)
+            holder.imgProduct.setImageResource(R.drawable.avatars)
         }else{
             Glide.with(mContext).load(image).into(holder.imgProduct)
         }
@@ -116,7 +113,6 @@ class CartAdapter(
                 else -> {
                     quantity = num - 1
                     val total = priceAProduct * quantity
-
                     // update price in list
                     currentProduct.price = total
                     currentProduct.quantity = quantity
@@ -130,7 +126,20 @@ class CartAdapter(
             }
 
         }
+
+        holder.btnDelete.setOnClickListener {
+            if (deleteProductInCart(cartDetailId)){
+                listProduct.removeAt(position)
+                notifyDataSetChanged()
+                updateTotalCart()
+                Toast.makeText(mContext,"Xóa thành công", Toast.LENGTH_SHORT).show()
+            }else{
+                Toast.makeText(mContext,"Thử lại", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
+
+
 
     // return the item count of recyclerview
     override fun getItemCount(): Int {
@@ -147,13 +156,14 @@ class CartAdapter(
         var numProduct: TextView = view.quantity
         val btnPlus: ImageView = view.btn_plus
         val btnMinus: ImageView = view.btn_minus
+        val btnDelete: ImageView = view.btn_delete
     }
 
-    fun formatCurrency(price: Int): String{
+    private fun formatCurrency(price: Int): String{
         return NumberFormat.getCurrencyInstance(Locale("vie","vn")).format(price)
     }
 
-    fun updateTotalCart(){
+    private fun updateTotalCart(){
         var total = 0
         for (item in listProduct){
             total += item.product.price * item.quantity
@@ -184,9 +194,9 @@ class CartAdapter(
                     response: Response<CartItem>
                 ) {
                     if (response.isSuccessful){
-                        Toast.makeText(mContext, "Update Successful", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(mContext, "Cập nhật thành công", Toast.LENGTH_SHORT).show()
                     }else{
-                        Toast.makeText(mContext, "Update Fail", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(mContext, "Không thể cập nhật. Thử lại", Toast.LENGTH_SHORT).show()
                     }
                 }
                 override fun onFailure(call: Call<CartItem>, t: Throwable) {
@@ -194,5 +204,26 @@ class CartAdapter(
                 }
             })
     }
+
+    private fun deleteProductInCart(id: Int): Boolean {
+        var statusRequest: Boolean = true
+
+        RetrofitClient.instance.deleteProductInCart(id)
+            .enqueue(object : Callback<Any>{
+                override fun onResponse(call: Call<Any>, response: Response<Any>) {
+                    statusRequest = response.isSuccessful
+
+                    Log.i("del", statusRequest.toString())
+                }
+
+                override fun onFailure(call: Call<Any>, t: Throwable) {
+                    Log.i("del", "call api delete error")
+                }
+
+            })
+
+        return statusRequest
+    }
+
 
 }

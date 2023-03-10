@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.wheelshop" >
+    package="com.example.wheelshop">
 
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="com.example.wheelshop.DataLocal.App"
+        android:name=".DataLocal.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -18,25 +18,28 @@
         android:theme="@style/Theme.EnCare"
         android:usesCleartextTraffic="true"
         tools:ignore="Instantiatable"
-        tools:targetApi="m" >
+        tools:targetApi="m">
         <activity
-            android:name="com.example.wheelshop.activity.ProductDetailActivity"
+            android:name=".activity.DetailOrderActivity"
             android:exported="true" />
         <activity
-            android:name="com.example.wheelshop.activity.MainActivity"
-            android:exported="false" >
-        </activity>
+            android:name=".activity.CheckoutActivity"
+            android:exported="true" />
         <activity
-            android:name="com.example.wheelshop.oldCode.HomeActivity"
-            android:exported="false" >
-        </activity>
+            android:name=".activity.ProductDetailActivity"
+            android:exported="true" />
         <activity
-            android:name="com.example.wheelshop.activity.RegisterActivity"
-            android:exported="false" >
-        </activity>
+            android:name=".activity.MainActivity"
+            android:exported="false" />
         <activity
-            android:name="com.example.wheelshop.activity.LoginActivity"
-            android:exported="true" >
+            android:name=".oldCode.HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.LoginActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

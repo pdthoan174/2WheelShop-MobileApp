@@ -32,7 +32,7 @@
                     <ImageView
                         android:id="@+id/imageView"
                         android:layout_width="match_parent"
-                        android:layout_height="150dp"
+                        android:layout_height="70dp"
                         android:src="#6AE0D9"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -93,36 +93,6 @@
                         app:layout_constraintStart_toEndOf="@+id/textHi"
                         app:layout_constraintTop_toTopOf="@+id/avt" />
 
-                    <TextView
-                        android:id="@+id/findInHome"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="@font/poppins_semibold"
-                        android:text="Find a service"
-                        android:textColor="@color/white"
-                        android:textSize="15sp"
-
-                        app:layout_constraintStart_toStartOf="@+id/avt"
-                        app:layout_constraintTop_toBottomOf="@+id/avt" />
-
-                    <androidx.appcompat.widget.SearchView
-                        android:id="@+id/search"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginEnd="20dp"
-                        android:background="@drawable/search_bg"
-                        android:fontFamily="@font/poppins_semibold"
-                        android:imeOptions="actionGo"
-                        android:textColor="#919090"
-                        android:textSize="13sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/findInHome">
-
-                    </androidx.appcompat.widget.SearchView>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

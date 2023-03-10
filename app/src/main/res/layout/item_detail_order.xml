@@ -3,14 +3,15 @@
     android:id="@+id/itemProduct"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/bg_product_cart"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
+    android:layout_marginBottom="20dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
     <androidx.cardview.widget.CardView
         android:id="@+id/item_image"
-        android:layout_width="80dp"
-        android:layout_height="85dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_margin="10dp"
         app:cardBackgroundColor="#F4F3F3"
         app:cardCornerRadius="10dp"
@@ -33,27 +34,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
-        android:maxWidth="260dp"
+        android:maxWidth="300dp"
         android:fontFamily="@font/poppins_semibold"
-        android:text="Nhớt Động Cơ Xe Máy Động Cơ Động Cơ"
+        android:text="Nhớt Động Cơ Xe Máy Động Cơ Động Cơ asdf sdaf"
         android:textColor="@color/black"
         android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/item_image"
         app:layout_constraintTop_toTopOf="@+id/item_image" />
 
-    <TextView
-        android:id="@+id/categoryProduct"
-        android:layout_width="wrap_content"
-        android:layout_height="15dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="-5dp"
-        android:maxWidth="200dp"
-        android:fontFamily="@font/poppins_semibold"
-        android:text="Nhớt"
-        android:textColor="#D53E3E3E"
-        android:textSize="12dp"
-        app:layout_constraintStart_toEndOf="@+id/item_image"
-        app:layout_constraintTop_toBottomOf="@+id/nameProduct" />
 
     <TextView
         android:id="@+id/price_text"
@@ -64,10 +52,11 @@
         android:textColor="@color/black"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="@+id/item_image"
-        app:layout_constraintStart_toStartOf="@+id/nameProduct" />
+        app:layout_constraintStart_toStartOf="@+id/nameProduct"
+        app:layout_constraintTop_toBottomOf="@+id/nameProduct" />
 
     <LinearLayout
-        android:layout_width="100dp"
+        android:layout_width="wrap_content"
         android:layout_height="25dp"
         android:gravity="center_vertical"
         app:layout_constraintBottom_toBottomOf="@id/price_text"
@@ -75,49 +64,27 @@
         android:layout_marginEnd="15dp"
         android:padding="2dp"
         >
-        <ImageButton
-            android:id="@+id/btn_minus"
-            android:layout_width="25dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/button_quantity"
-            android:layout_weight="1"
-            android:src="@drawable/ic_remove"
-            android:scaleType="fitCenter"
-            android:contentDescription="TODO" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="27dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Số lượng: "
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:gravity="center"
+            />
         <TextView
             android:id="@+id/quantity"
-            android:layout_width="25dp"
+            android:layout_width="wrap_content"
             android:layout_height="27dp"
             android:fontFamily="@font/poppins_bold"
             android:text="12"
             android:textColor="@color/black"
             android:textSize="17sp"
             android:gravity="center"
-            android:layout_weight="3"
             />
-        <ImageButton
-            android:id="@+id/btn_plus"
-            android:layout_width="25dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/button_quantity"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_add"
 
-            android:contentDescription="TODO" />
 
     </LinearLayout>
-    <ImageView
-        android:id="@+id/btn_delete"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="10dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/ic_delete"
-        android:contentDescription="TODO" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

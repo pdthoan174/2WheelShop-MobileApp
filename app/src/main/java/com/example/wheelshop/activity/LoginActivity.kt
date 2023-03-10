@@ -8,6 +8,7 @@ import android.net.wifi.WifiManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.format.Formatter
+import android.util.Log
 import android.view.Gravity
 
 import android.widget.Toast
@@ -32,22 +33,13 @@ class LoginActivity : AppCompatActivity() {
         getInfoUser()
         //Log.i("hihi", isNetworkAvailable(this).toString())
 
-        if (!isNetworkAvailable(this)){
-            val toast = Toast.makeText(this, "Please connect internet and try again",Toast.LENGTH_LONG)
-            toast.setGravity(Gravity.TOP, 20, 30)
-            toast.show()
-        }
-//        getIPAddress()
         btn_login?.setOnClickListener {
             val phone = editTextPhone.text.toString().trim()
             val password:String = editTextPassword?.text.toString().trim()
-//            if (validate(phone, password)){
-//                sendRequestLogin(phone, password)
-//
-//            }
+
             // luu tai khoan khi bam luu dang nhap vao bo nho dien thoai
             val saveLogin:Boolean = rememberLogin.isChecked
-            sendRequestLogin(phone,password,saveLogin)
+            sendRequestLogin(phone,password,true)
         }
         sign_up?.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
@@ -55,7 +47,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    fun sendRequestLogin(email: String, password: String, saveLogin: Boolean) {
+    private fun sendRequestLogin(email: String, password: String, saveLogin: Boolean) {
         val request = UserRequestLogin()
         request.email = email
         request.password = password
@@ -70,13 +62,25 @@ class LoginActivity : AppCompatActivity() {
                     val postResult = response.body()
                     if (postResult != null){
 //                        Log.i("hihi", data.toString())
-                        val token = "Bearer "+postResult.token.toString()
                         val iduser = postResult.id
+                        val nameUser: String? = postResult.name
+                        var avatar: String? = postResult.image
 
-                        saveToken(token, iduser.toString(), email)
+                        var mail: String? = postResult.email
+                        var phone: String? = postResult.phone
+                        var gender: Boolean? = postResult.gender
+                        var address: String? = postResult.address
+
+//                        saveToken(token, iduser.toString(), email)
                         if (saveLogin){
                             if (password != null) {
-                                storageInfoUser(email,password)
+                                SharedPreferencesOptimal.put("AVT", avatar)
+                                SharedPreferencesOptimal.put("PHONE", phone)
+                                SharedPreferencesOptimal.put("GENDER", gender)
+                                SharedPreferencesOptimal.put("ADDRESS", address)
+
+
+                                storageInfoUser(email,password, iduser.toString(), nameUser)
                             }
                         }
                         Toast.makeText(applicationContext, "Login Success",Toast.LENGTH_SHORT).show()
@@ -112,17 +116,22 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    fun storageInfoUser(username:String, password:String) {
+    fun storageInfoUser(username:String, password:String, userId: String, name: String?) {
 //        val preferences:SharedPreferences = this.getSharedPreferences("Info User", Context.MODE_PRIVATE)
         // Kich hoat trang thai EDIT moi EDIT duoc
 //        val editor = preferences.edit()
-        SharedPreferencesOptimal.put("PHONE",username)
+        SharedPreferencesOptimal.put("EMAIL",username)
         SharedPreferencesOptimal.put("PASSWORD", password)
+        SharedPreferencesOptimal.put("USERID", userId)
+        SharedPreferencesOptimal.put("NAME", name)
+
+        Log.i("userID", "username $username password $password userId $userId")
+
     }
 
-    fun getInfoUser(){
+    private fun getInfoUser(){
 //        val preferences:SharedPreferences = this.getSharedPreferences("Info User", Context.MODE_PRIVATE)
-        val phone = SharedPreferencesOptimal.get("PHONE",String::class.java)
+        val phone = SharedPreferencesOptimal.get("EMAIL",String::class.java)
         val password = SharedPreferencesOptimal.get("PASSWORD", String::class.java)
         editTextPhone.setText(phone)
         editTextPassword?.setText(password)
@@ -133,22 +142,7 @@ class LoginActivity : AppCompatActivity() {
 //        val editor = preferences.edit()
         SharedPreferencesOptimal.put("TOKEN", token)
         SharedPreferencesOptimal.put("ID", idUser)
-        SharedPreferencesOptimal.put("EMAIL", email)
+//        SharedPreferencesOptimal.put("EMAIL", email)
     }
-    // kiểm tra ket noi internet
-    fun isNetworkAvailable(context: Context):Boolean{
-        val connectivityManager:ConnectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        val activeNetworkInfo: NetworkInfo? = connectivityManager.getActiveNetworkInfo()
-        return activeNetworkInfo!= null && activeNetworkInfo.isConnected
-    }
-
-    // lay dia chi ip
-    fun getIPAddress(){
-        val wifiManager: WifiManager = applicationContext.getSystemService(WIFI_SERVICE) as WifiManager
-        val ipAddress: String = Formatter.formatIpAddress(wifiManager.connectionInfo.ipAddress)
-        Toast.makeText(applicationContext, ipAddress,Toast.LENGTH_SHORT).show()
-
-    }
-
 
 }

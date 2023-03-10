@@ -75,6 +75,7 @@
                     android:layout_height="350dp"
                     android:layout_marginTop="10dp"
                     android:scaleType="fitXY"
+                    android:visibility="invisible"
                     android:src="@drawable/sp" />
 
                 <RelativeLayout
@@ -88,6 +89,7 @@
                         android:layout_alignParentStart="true"
                         android:layout_centerVertical="true"
                         android:text="Nhot"
+                        android:visibility="invisible"
                         android:textColor="#BE000000"
                         android:textSize="15sp">
 
@@ -100,6 +102,8 @@
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:text="Đã Bán: 12"
+                        android:visibility="invisible"
+
                         android:textColor="#BE000000"
                         android:textSize="15sp">
 
@@ -113,6 +117,8 @@
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/poppins_semibold"
                     android:text="NIKE BASKET BALL"
+                    android:visibility="invisible"
+
                     android:textColor="#BE000000"
                     android:textSize="15sp"
                     android:textStyle="bold" />
@@ -129,6 +135,8 @@
                         android:layout_centerVertical="true"
                         android:fontFamily="@font/poppins_bold"
                         android:text="200000đ"
+                        android:visibility="invisible"
+
                         android:textColor="#000000"
                         android:textSize="20sp" />
 
@@ -139,6 +147,8 @@
                         android:layout_centerVertical="true"
                         android:layout_marginBottom="10dp"
                         android:text="Free Shipping"
+                        android:visibility="invisible"
+
                         android:textSize="12sp" />
 
                 </RelativeLayout>
@@ -278,6 +288,8 @@
                     android:fontFamily="@font/poppins"
                     android:text="@string/mota_sp"
                     android:textColor="#000000"
+                    android:visibility="invisible"
+
                     android:textSize="15sp" />
 
                 <TextView

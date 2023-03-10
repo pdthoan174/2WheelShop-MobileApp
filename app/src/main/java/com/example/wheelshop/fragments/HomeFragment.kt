@@ -73,7 +73,7 @@ class HomeFragment : Fragment(), ProductClickHandler {
 
     private fun getToken(){
         token = SharedPreferencesOptimal.get("TOKEN", String::class.java)
-        idUser = SharedPreferencesOptimal.get("ID", String::class.java)
+        idUser = SharedPreferencesOptimal.get("USERID", String::class.java)
     }
 
     private fun getProfile(id: Int){
@@ -87,15 +87,18 @@ class HomeFragment : Fragment(), ProductClickHandler {
                     val infoProfile = response.body()
                     //Log.i("hihi",infoProfile.toString())
                     if (response.isSuccessful){
-                        textName.text = infoProfile?.name
+                        if (textName!=null){
+                            textName.text = infoProfile?.name
+                        }
                         val avatar = infoProfile?.image
+
                         if (avatar == null){
-                            avt1.setImageResource(R.drawable.avatar)
+                            avt1.setImageResource(R.drawable.avatars)
                         }else{
                             // load using Glide
                             Glide.with(mContext)
                                 .load(avatar)
-                                .error(R.drawable.avatar)
+                                .error(R.drawable.avatars)
                                 .into(avt1)
                         }
                     }else{
@@ -121,8 +124,10 @@ class HomeFragment : Fragment(), ProductClickHandler {
 //                        Log.i("hihi",list.toString())
                         if (list != null){
                             val adapter = ProductAdapter(list,"vertical",9)
-                            list_product_rate.adapter = adapter
-                            list_product_rate.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false)
+                            if (list_product_rate!= null){
+                                list_product_rate.adapter = adapter
+                                list_product_rate.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false)
+                            }
                         }
                         Toast.makeText(mContext, "Call List Product Rate Success",Toast.LENGTH_SHORT).show()
                     }else{

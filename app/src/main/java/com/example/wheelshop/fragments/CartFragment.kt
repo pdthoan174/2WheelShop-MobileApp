@@ -1,6 +1,8 @@
 package com.example.wheelshop.fragments
 
+import android.app.ActivityOptions
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,14 +10,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wheelshop.DataLocal.SharedPreferencesOptimal
 import com.example.wheelshop.R
+import com.example.wheelshop.activity.CheckoutActivity
+import com.example.wheelshop.activity.ProductDetailActivity
 import com.example.wheelshop.adapters.CartAdapter
 import com.example.wheelshop.api.RetrofitClient
 import com.example.wheelshop.models.*
 import com.example.wheelshop.myInterface.AddToCart
 import kotlinx.android.synthetic.main.fragment_cart.*
+import kotlinx.android.synthetic.main.fragment_cart.view.*
+import okhttp3.internal.notify
 
 import retrofit2.Call
 import retrofit2.Callback
@@ -25,6 +32,8 @@ import java.util.ArrayList
 class CartFragment : Fragment() {
     val email = SharedPreferencesOptimal.get("EMAIL", String::class.java)
     private var idCart:Int = 0
+
+    private var isCartEmpty = true
 
     private lateinit var mContext: Context
     override fun onAttach(context: Context) {
@@ -37,6 +46,17 @@ class CartFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val mView = inflater.inflate(R.layout.fragment_cart, container, false)
+
+        mView.btn_checkout.setOnClickListener {
+            if (isCartEmpty){
+                Toast.makeText(mContext, "Giỏ hàng trống", Toast.LENGTH_SHORT).show()
+            }else{
+                val intent = Intent(activity, CheckoutActivity::class.java)
+                //start activity with animation
+                val options: ActivityOptions = ActivityOptions.makeCustomAnimation(mContext,R.anim.slide_in_right, R.anim.slide_out_left)
+                mContext.startActivity(intent, options.toBundle())
+            }
+        }
 
         return mView
     }
@@ -67,7 +87,7 @@ class CartFragment : Fragment() {
             })
     }
 
-    public fun listProductInCart(cart:Int) {
+    private fun listProductInCart(cart:Int) {
         RetrofitClient.instance.getListProductCart(cart)
             .enqueue(object: Callback<CartRespone>{
                 override fun onResponse(
@@ -75,25 +95,40 @@ class CartFragment : Fragment() {
                     response: Response<CartRespone>
                 ) {
                     if (response.isSuccessful){
+//                        val list: ArrayList<CartItem>? = response.body()
                         val list: ArrayList<CartItem>? = response.body()
 
-                        //Log.i("hihi",list.toString())
-                        if (list != null){
-                            val adapter = CartAdapter(list,totalText)
-                            listCartProduct.adapter = adapter
-                            listCartProduct.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, true)
-                            listCartProduct.scrollToPosition(list.size - 1)
-//                            setTotalCart(adapter)
-                        }
-                        Toast.makeText(mContext, "Call List Product cart Success",Toast.LENGTH_SHORT).show()
-                    }else{
-                        Toast.makeText(mContext, "Call Product cart Fail",Toast.LENGTH_SHORT).show()
+                        if (list?.isEmpty() == true){
+                            isCartEmpty = true
+                            totalText.text = "0 đ"
+                            emptyCart.visibility = View.VISIBLE
+                            listCartProduct.visibility = View.GONE
+                        }else{
+                            isCartEmpty = false
+                            emptyCart.visibility = View.GONE
+                            listCartProduct.visibility = View.VISIBLE
 
+                            if (list != null){
+                                val adapter = CartAdapter(list,totalText)
+                                listCartProduct.adapter = adapter
+                                listCartProduct.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, true)
+                                listCartProduct.scrollToPosition(list.size - 1)
+//                            setTotalCart(adapter)
+                            }
+
+                        }
+//                        Toast.makeText(mContext, "",Toast.LENGTH_SHORT).show()
+                        Log.i("toast","Call List Product cart Success")
+
+                    }else{
+//                        Toast.makeText(mContext, "",Toast.LENGTH_SHORT).show()
+                        Log.i("toast","Call Product cart Fail")
                     }
                 }
 
                 override fun onFailure(call: Call<CartRespone>, t: Throwable) {
-                    Toast.makeText(mContext, "Call List Product cart Fail",Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(mContext, "",Toast.LENGTH_SHORT).show()
+                    Log.i("toast","Call List Product cart Fail")
                 }
             })
     }
@@ -102,6 +137,7 @@ class CartFragment : Fragment() {
         super.onResume()
         Log.i("cartfm", "onResume")
         listProductInCart(idCart)
+
     }
 
     // call function on adapter

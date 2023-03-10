@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.ListCategoryFragment">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listAllProduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="50dp"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        tools:itemCount="4"
+        app:spanCount="3"
+        android:nestedScrollingEnabled="false"
+        tools:listitem="@layout/list_product_1">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+</LinearLayout>

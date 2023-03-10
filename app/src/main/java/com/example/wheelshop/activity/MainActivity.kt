@@ -62,15 +62,4 @@ class MainActivity : AppCompatActivity() {
         })
 
     }
-
-//    override fun addProductToCart() {
-//        val tag = "android.switcher:"+R.id.view_pager_2.toString()+":"+1
-//
-//        val fragment = supportFragmentManager.findFragmentByTag(tag) as CartFragment
-//        val cartId = SharedPreferencesOptimal.get("CART",String::class.java)
-//
-//        fragment.listProductInCart(cartId.toInt())
-//
-//    }
-
 }

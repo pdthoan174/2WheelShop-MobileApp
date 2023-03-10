@@ -29,7 +29,6 @@ interface ApiServices {
 //
 //    ):Call<DataDoctor>
 
-
     //get sản phẩm thịnh hành
     @GET("/api/products/rated")
     fun getlistProductRate():Call<DataProduct>
@@ -79,5 +78,47 @@ interface ApiServices {
     fun updateItemInCart(
         @Body cartDetail: HashMap<String,Any>
     ):Call<CartItem>
+
+    //delete product in cart
+    @DELETE("/api/cartDetail/{id}")
+    fun deleteProductInCart(
+        @Path("id") id: Int
+    ):Call<Any>
+
+    @POST("/api/orders/{mail}")
+    fun createOrder(
+        @Path("mail") mail: String,
+        @Body order: HashMap<String,Any>
+    ):Call<OrderResponse>
+
+    @GET("/api/orders/user/{mail}")
+    fun getListOrder(
+        @Path("mail") mail: String,
+    ):Call<ListOrderResponse>
+
+    @GET("/api/orderDetail/order/{orderId}")
+    fun getListDetailOrder(
+        @Path("orderId") orderId: Int,
+    ):Call<ListHistoryOrderResponse>
+
+    @GET("/api/orders/cancel/{orderId}")
+    fun cancelOrder(
+        @Path("orderId") orderId: Int
+    ):Call<Any>
+
+    @GET("/api/categories")
+    fun getListCategory(
+
+    ):Call<ListCategory>
+
+    @GET("/api/products/category/{id}")
+    fun getListProductById(
+        @Path("id") id: Int
+    ):Call<DataProduct>
+
+    @POST("/api/send-mail/otp")
+    fun getOTP(
+        @Body email: String
+    ):Call<Any>
 
 }

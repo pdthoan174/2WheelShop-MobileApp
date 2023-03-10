@@ -58,6 +58,15 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <ImageView
+            android:id="@+id/emptyCart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/empty_cart"
+            android:visibility="gone"
+            android:contentDescription="TODO">
+        </ImageView>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listCartProduct"
             android:layout_width="match_parent"
@@ -71,6 +80,7 @@
             tools:listitem="@layout/cart_product">
 
         </androidx.recyclerview.widget.RecyclerView>
+
 
 
     </LinearLayout>
@@ -101,21 +111,21 @@
                 android:fontFamily="@font/poppins_bold"
                 android:textColor="#E6595858"
                 />
+
             <TextView
                 android:id="@+id/totalText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="####"
-                android:textSize="17sp"
-                android:textStyle="bold"
                 android:fontFamily="@font/poppins_bold"
+                android:text="0 đ"
                 android:textColor="@color/black"
-                />
+                android:textSize="17sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
 
         <Button
-            android:id="@+id/btn_buy_now"
+            android:id="@+id/btn_checkout"
             android:layout_width="140dp"
             android:layout_height="40dp"
             android:layout_alignParentEnd="true"

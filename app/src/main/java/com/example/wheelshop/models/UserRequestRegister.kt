@@ -15,6 +15,11 @@ class UserRequestRegister{
     @SerializedName("name")
     @Expose
     var name: String? = null
+
+    @SerializedName("address")
+    @Expose
+    var address: String? = null
+
     @SerializedName("phone")
     @Expose
     var phone: String? = null
