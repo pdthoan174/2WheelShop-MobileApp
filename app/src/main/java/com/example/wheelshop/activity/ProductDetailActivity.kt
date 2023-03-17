@@ -119,8 +119,8 @@ class ProductDetailActivity : AppCompatActivity() {
                             nameProductTV.text = nameProduct
                             priceProductTV.text = priceFormat.toString()
                             descriptionProductTV.text = descriptionProduct
-                            soldTV.text = "Đã bán: $sold"
-                            quantityTV.text = "Số lượng sản phẩm: $quantity"
+                            soldTV.text = "Sold: $sold"
+                            quantityTV.text = "Quantity Product: $quantity"
 
                             // hien thi views
                             image_product.visibility = View.VISIBLE
