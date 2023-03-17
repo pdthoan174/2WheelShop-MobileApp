@@ -28,7 +28,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="Chi tiết đơn hàng"
+        android:text="Detail Order"
         android:gravity="center"
         android:fontFamily="@font/poppins_medium"
         android:textSize="18sp"

@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
                 android:fontFamily="@font/poppins_semibold"
-                android:text="Sản Phẩm"
+                android:text="Product"
                 android:textColor="@color/white"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="@id/btn_back"
@@ -183,7 +183,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins_semibold"
                             android:gravity="center"
-                            android:text="Giao hàng miễn phí"
+                            android:text="Free shipping "
                             android:textColor="#BE000000"
                             android:textSize="10sp" />
 
@@ -208,7 +208,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins_semibold"
                             android:gravity="center"
-                            android:text="Thanh toán an toàn"
+                            android:text="Payment Card"
                             android:textColor="#BE000000"
                             android:textSize="10sp" />
 
@@ -233,7 +233,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins_semibold"
                             android:gravity="center"
-                            android:text="Hỗ trợ 24/7"
+                            android:text="Support 24/7"
                             android:textColor="#BE000000"
                             android:textSize="10sp" />
 
@@ -259,7 +259,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins_semibold"
                             android:gravity="center"
-                            android:text="Dịch vụ quà tặng"
+                            android:text="Gift Service"
                             android:textColor="#BE000000"
                             android:textSize="10sp" />
 
@@ -276,7 +276,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/poppins_semibold"
-                    android:text="Mô tả sản phẩm"
+                    android:text="Product Detail"
                     android:textColor="#000000"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -298,7 +298,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/poppins_semibold"
-                    android:text="Số Lượng Sản Phẩm: "
+                    android:text="Number of product: "
                     android:textColor="#000000"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -308,7 +308,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/poppins_semibold"
-                    android:text="Sản Phẩm Liên Quan"
+                    android:text="related products"
                     android:textColor="#000000"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -349,7 +349,7 @@
             android:background="@drawable/button_border"
             android:backgroundTint="#60717777"
             android:fontFamily="@font/poppins_semibold"
-            android:text="Thêm vào giỏ hàng"
+            android:text="Add to cart"
             android:textColor="#E1232323"
             android:textSize="13sp" />
 
@@ -362,7 +362,7 @@
             android:background="@drawable/button_border"
             android:backgroundTint="#00BCD4"
             android:fontFamily="@font/poppins_bold"
-            android:text="Mua ngay"
+            android:text="Buy now"
             android:textColor="@color/white"
             android:textSize="13sp"
             />

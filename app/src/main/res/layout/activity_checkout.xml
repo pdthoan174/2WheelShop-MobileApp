@@ -51,7 +51,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="0dp"
                     android:fontFamily="@font/poppins_semibold"
-                    android:text="Thanh Toán"
+                    android:text="Check Out"
                     android:textColor="@color/white"
                     android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="@id/btn_back"
@@ -75,7 +75,7 @@
                     android:fontFamily="@font/poppins_bold"
                     android:gravity="center"
                     android:padding="10dp"
-                    android:text="Thông tin nhận hàng"
+                    android:text="Delivery Infomation"
                     android:textColor="@color/black"
                     android:textSize="21sp" />
 
@@ -92,7 +92,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
                     android:layout_marginEnd="30dp"
-                    android:text="Họ và tên: "
+                    android:text="Name: "
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
@@ -107,7 +107,7 @@
                     android:autoSizeMaxTextSize="20sp"
                     android:background="@drawable/bg_text"
                     android:fontFamily="@font/poppins"
-                    android:hint="Nhập họ tên "
+                    android:hint="Input name "
                     android:importantForAutofill="no"
                     android:inputType="text"
                     android:maxLength="30"
@@ -121,7 +121,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
                     android:layout_marginEnd="30dp"
-                    android:text="Số điện thoại: "
+                    android:text="Phone number: "
                     android:textColor="@color/black"
                     android:textSize="15sp" />
                 <EditText
@@ -134,7 +134,7 @@
                     android:autoSizeMaxTextSize="20sp"
                     android:background="@drawable/bg_text"
                     android:fontFamily="@font/poppins"
-                    android:hint="Số điện thoại"
+                    android:hint="Phone number"
                     android:importantForAutofill="no"
                     android:inputType="number"
                     android:maxLength="30"
@@ -158,7 +158,7 @@
                     android:layout_marginStart="30dp"
 
                     android:layout_marginEnd="30dp"
-                    android:text="Địa chỉ giao hàng:"
+                    android:text="Address:"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
@@ -174,7 +174,7 @@
                     <TextView
                         android:layout_width="90dp"
                         android:layout_height="wrap_content"
-                        android:text="Tỉnh:"
+                        android:text="Province:"
                         android:layout_gravity="center"
                         android:textColor="@color/black"
                         android:textSize="15sp"
@@ -185,7 +185,7 @@
                         android:layout_height="match_parent"
                         android:background="@null"
                         android:layout_marginStart="20dp"
-                        android:hint="Nhập tỉnh thành"
+                        android:hint="Province"
                         android:textSize="15sp"
                         android:maxLength="30"
                         android:maxLines="1"
@@ -206,7 +206,7 @@
                     <TextView
                         android:layout_width="90dp"
                         android:layout_height="wrap_content"
-                        android:text="Huyện/TP:"
+                        android:text="Distrist/City:"
                         android:layout_gravity="center"
                         android:textColor="@color/black"
                         android:textSize="15sp"
@@ -217,7 +217,7 @@
                         android:layout_height="match_parent"
                         android:background="@null"
                         android:layout_marginStart="20dp"
-                        android:hint="Huyện/Thành phố"
+                        android:hint="Distrist"
                         android:textSize="15sp"
                         android:maxLength="30"
                         android:maxLines="1"
@@ -236,7 +236,7 @@
                     <TextView
                         android:layout_width="90dp"
                         android:layout_height="wrap_content"
-                        android:text="Phường/Xã:"
+                        android:text="Commune:"
                         android:layout_gravity="center"
                         android:textColor="@color/black"
                         android:textSize="15sp"
@@ -247,7 +247,7 @@
                         android:layout_height="match_parent"
                         android:background="@null"
                         android:layout_marginStart="20dp"
-                        android:hint="Phường/Xã"
+                        android:hint="Commune"
                         android:textSize="15sp"
                         android:maxLength="30"
                         android:maxLines="1"
@@ -267,7 +267,7 @@
                     <TextView
                         android:layout_width="90dp"
                         android:layout_height="wrap_content"
-                        android:text="Số Nhà: "
+                        android:text="Street: "
                         android:layout_gravity="center"
                         android:textColor="@color/black"
                         android:textSize="15sp"
@@ -278,7 +278,7 @@
                         android:layout_height="match_parent"
                         android:background="@null"
                         android:layout_marginStart="20dp"
-                        android:hint="Số nhà "
+                        android:hint="Street "
                         android:textSize="15sp"
                         android:maxLength="30"
                         android:maxLines="1"
@@ -294,7 +294,7 @@
                     android:layout_marginTop="64dp"
                     android:layout_marginEnd="20dp"
                     android:fontFamily="@font/poppins_bold"
-                    android:text="Xác nhận thanh toán"
+                    android:text="Confirm Payment"
                     android:textSize="15sp"
                     android:textColor="#FDFEFF"
                     android:background="@drawable/button_border"

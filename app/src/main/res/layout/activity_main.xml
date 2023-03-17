@@ -20,13 +20,13 @@
         android:layout_alignParentBottom="true"
         android:background="?android:attr/windowBackground"
         app:itemBackground="@color/gray"
+        app:itemHorizontalTranslationEnabled="false"
         app:itemIconSize="25dp"
         app:itemIconTint="@drawable/nav_item_color_selected"
         app:itemTextAppearanceActive="@style/BottomNavigationViewTextStyle"
         app:itemTextAppearanceInactive="@style/BottomNavigationViewTextStyle"
         app:itemTextColor="@drawable/nav_item_color_selected"
         app:labelVisibilityMode="selected"
-        app:itemHorizontalTranslationEnabled = "false"
         app:menu="@menu/bottom_nav_menu" />
 
 </RelativeLayout>

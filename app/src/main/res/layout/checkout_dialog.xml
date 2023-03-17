@@ -13,7 +13,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="Đặt Hàng Thành Công"
+        android:text="Order Successfully"
         android:gravity="center"
         android:fontFamily="@font/poppins_medium"
         android:textSize="18sp"
